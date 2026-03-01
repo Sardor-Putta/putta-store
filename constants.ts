@@ -62,4 +62,4 @@ export const PRODUCTS: Product[] = [
   image: 'https://picsum.photos/seed/putta_cap/600/800',
   description: 'Structured cap with minimal embroidered branding.',
   sizes: ['One Size']
-}
+};
