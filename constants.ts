@@ -36,3 +36,30 @@ export const PRODUCTS: Product[] = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   }
 ];
+{
+  id: '5',
+  name: 'PUTTA CORE HOODIE – NOIR',
+  price: 129,
+  category: 'Hoodies',
+  image: 'https://picsum.photos/seed/putta_hoodie/600/800',
+  description: 'Heavyweight cotton hoodie. Structured oversized silhouette.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '6',
+  name: 'PUTTA LONG SLEEVE – BONE',
+  price: 79,
+  category: 'Tops',
+  image: 'https://picsum.photos/seed/putta_longsleeve/600/800',
+  description: 'Minimal long sleeve. Clean structure. Elevated daily wear.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '7',
+  name: 'PUTTA SIGNATURE CAP – BLACK',
+  price: 49,
+  category: 'Accessories',
+  image: 'https://picsum.photos/seed/putta_cap/600/800',
+  description: 'Structured cap with minimal embroidered branding.',
+  sizes: ['One Size']
+}
