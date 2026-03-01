@@ -13,7 +13,9 @@ const Shop: React.FC = () => {
           className="mb-16 text-center"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">ALL PRODUCTS</h1>
-          <p className="text-neutral-500 tracking-widest text-sm">ESSENTIALS FOR THE DISCERNING</p>
+          <p className="text-neutral-500 mt-4 text-sm tracking-[0.3em] uppercase">
+  Core Essentials. Elevated Minimalism.
+</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
