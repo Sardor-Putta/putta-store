@@ -34,8 +34,7 @@ export const PRODUCTS: Product[] = [
     image: 'https://picsum.photos/seed/putta_blue/600/800',
     description: 'Muted sky blue. Premium cotton. Elevated everyday wear.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
-  }
-];
+  },
 {
   id: '5',
   name: 'PUTTA CORE HOODIE – NOIR',
