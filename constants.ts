@@ -62,4 +62,59 @@ export const PRODUCTS: Product[] = [
   image: 'https://picsum.photos/seed/putta_cap/600/800',
   description: 'Structured cap with minimal embroidered branding.',
   sizes: ['One Size']
-};
+},
+{
+  id: '8',
+  name: 'PUTTA CORE TEE – WHITE',
+  price: 95,
+  category: 'Tops',
+  image: 'https://picsum.photos/seed/putta_white/600/800',
+  description: 'Clean white minimal tee. Premium cotton.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '9',
+  name: 'PUTTA OVERSIZED HOODIE – GREY',
+  price: 139,
+  category: 'Hoodies',
+  image: 'https://picsum.photos/seed/putta_hoodie_grey/600/800',
+  description: 'Heavy oversized hoodie. Street silhouette.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '10',
+  name: 'PUTTA ESSENTIAL PANTS – BLACK',
+  price: 119,
+  category: 'Bottoms',
+  image: 'https://picsum.photos/seed/putta_pants_black/600/800',
+  description: 'Minimal street pants. Clean fit.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '8',
+  name: 'PUTTA CORE TEE – WHITE',
+  price: 95,
+  category: 'Tops',
+  image: 'https://picsum.photos/seed/putta_white/600/800',
+  description: 'Clean white minimal tee. Premium cotton.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '9',
+  name: 'PUTTA OVERSIZED HOODIE – GREY',
+  price: 139,
+  category: 'Hoodies',
+  image: 'https://picsum.photos/seed/putta_hoodie_grey/600/800',
+  description: 'Heavy oversized hoodie. Street silhouette.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '10',
+  name: 'PUTTA ESSENTIAL PANTS – BLACK',
+  price: 119,
+  category: 'Bottoms',
+  image: 'https://picsum.photos/seed/putta_pants_black/600/800',
+  description: 'Minimal street pants. Clean fit.',
+  sizes: ['S', 'M', 'L', 'XL']
+}
+];
