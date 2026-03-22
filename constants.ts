@@ -4,7 +4,7 @@ export const PRODUCTS: Product[] = [
     name: 'PUTTA CORE TEE – NOIR',
     price: 95,
     category: 'Tops',
-    image: 'https://picsum.photos/seed/putta_black/600/800',
+    image: image: 'https://raw.githubusercontent.com/Sardor-Putta/putta-store/refs/heads/main/127b335a-d390-4d97-894b-af4f1532c679.png',
     description: 'Premium heavyweight cotton. Oversized fit. Luxury street essential.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
