@@ -9,9 +9,11 @@ const Checkout: React.FC = () => {
   const { cartItems, cartTotal, clearCart } = useCart();
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitError(null);
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
@@ -40,7 +42,13 @@ Phone: ${phone}
 City: ${city}
 Address: ${address}, ${postalCode}, ${country}`;
 
-    await sendMessageToTelegram(orderMessage);
+    const orderSent = await sendMessageToTelegram(orderMessage);
+
+    if (!orderSent) {
+      setSubmitError("We couldn't submit your order right now. Please try again in a moment.");
+      setIsSubmitting(false);
+      return;
+    }
 
     // 2. Construct and send the Confirmation Message (to Customer)
     // Note: In this demo, we send to the same configured Chat ID as we don't collect Customer Telegram ID.
@@ -49,7 +57,7 @@ We will contact you within 10 minutes.
 Thank you for choosing PUTTA.`;
 
     await sendMessageToTelegram(confirmationMessage);
-    
+
     clearCart();
     setIsSubmitting(false);
     setIsOrderPlaced(true);
@@ -94,13 +102,21 @@ Thank you for choosing PUTTA.`;
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-xs text-neutral-500 mb-2 tracking-wide">FULL NAME</label>
-                <input name="fullName" required type="text" className="w-full bg-neutral-900 border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors" placeholder="John Doe" />
+                <input name="fullName" required minLength={2} type="text" className="w-full bg-neutral-900 border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors" placeholder="John Doe" />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs text-neutral-500 mb-2 tracking-wide">PHONE NUMBER</label>
-                  <input name="phone" required type="tel" className="w-full bg-neutral-900 border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors" placeholder="+1 (555) 000-0000" />
+                  <input
+                    name="phone"
+                    required
+                    type="tel"
+                    pattern="[0-9+\-\s()]{7,20}"
+                    title="Enter a valid phone number (digits, spaces, +, -, () allowed)"
+                    className="w-full bg-neutral-900 border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors"
+                    placeholder="+1 (555) 000-0000"
+                  />
                 </div>
                 <div>
                   <label className="block text-xs text-neutral-500 mb-2 tracking-wide">CITY</label>
@@ -116,7 +132,15 @@ Thank you for choosing PUTTA.`;
               <div className="grid grid-cols-2 gap-6">
                  <div>
                   <label className="block text-xs text-neutral-500 mb-2 tracking-wide">POSTAL CODE</label>
-                  <input name="postalCode" required type="text" className="w-full bg-neutral-900 border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors" placeholder="10001" />
+                  <input
+                    name="postalCode"
+                    required
+                    type="text"
+                    pattern="[A-Za-z0-9\-\s]{3,10}"
+                    title="Enter a valid postal code"
+                    className="w-full bg-neutral-900 border border-neutral-800 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors"
+                    placeholder="10001"
+                  />
                 </div>
                 <div>
                   <label className="block text-xs text-neutral-500 mb-2 tracking-wide">COUNTRY</label>
@@ -130,8 +154,11 @@ Thank you for choosing PUTTA.`;
               </div>
 
               <div className="pt-8">
-                <button 
-                  type="submit" 
+                {submitError && (
+                  <p className="text-red-500 text-sm mb-4">{submitError}</p>
+                )}
+                <button
+                  type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-white text-black py-4 text-sm font-bold tracking-[0.2em] hover:bg-neutral-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
