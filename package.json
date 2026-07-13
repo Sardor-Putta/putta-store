@@ -9,16 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/genai": "latest",
+    "framer-motion": "latest",
+    "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "latest",
-    "lucide-react": "latest",
-    "framer-motion": "latest",
-    "@google/genai": "latest"
+    "react-router-dom": "latest"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "latest",
     "@types/node": "latest",
     "@vitejs/plugin-react": "latest",
+    "tailwindcss": "latest",
     "typescript": "latest",
     "vite": "latest"
   }
