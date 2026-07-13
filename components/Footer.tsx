@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -15,31 +16,24 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="text-white font-medium tracking-widest text-xs mb-6">EXPLORE</h4>
           <ul className="space-y-4 text-sm text-neutral-500">
-            <li><a href="#" className="hover:text-white transition-colors">Shop All</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Collections</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Editorials</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Gift Cards</a></li>
+            <li><Link to="/shop" className="hover:text-white transition-colors">Shop All</Link></li>
+            <li><Link to="/collections" className="hover:text-white transition-colors">Collections</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-white font-medium tracking-widest text-xs mb-6">SUPPORT</h4>
           <ul className="space-y-4 text-sm text-neutral-500">
-            <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Shipping & Returns</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Size Guide</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
+            <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+            <li><Link to="/shipping-returns" className="hover:text-white transition-colors">Shipping & Returns</Link></li>
+            <li><Link to="/size-guide" className="hover:text-white transition-colors">Size Guide</Link></li>
+            <li><Link to="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
           </ul>
         </div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-600">
         <p>&copy; {new Date().getFullYear()} PUTTA STUDIOS. All rights reserved.</p>
-        <div className="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-neutral-400">Instagram</a>
-          <a href="#" className="hover:text-neutral-400">Twitter</a>
-          <a href="#" className="hover:text-neutral-400">TikTok</a>
-        </div>
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PRODUCTS } from '../constants';
 import { useCart } from '../context/CartContext';
@@ -74,7 +74,7 @@ const ProductDetail: React.FC = () => {
             <div className="mb-12">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-sm font-bold text-white tracking-widest">SELECT SIZE</span>
-                <span className="text-xs text-neutral-500 underline cursor-pointer">Size Guide</span>
+                <Link to="/size-guide" className="text-xs text-neutral-500 underline hover:text-white transition-colors">Size Guide</Link>
               </div>
               <div className="flex flex-wrap gap-4">
                 {product.sizes.map(size => (

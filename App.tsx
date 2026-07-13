@@ -10,6 +10,10 @@ import Collections from './pages/Collections';
 import About from './pages/About';
 import ProductDetail from './pages/ProductDetail';
 import Checkout from './pages/Checkout';
+import Shipping from './pages/Shipping';
+import FAQ from './pages/FAQ';
+import Contact from './pages/Contact';
+import SizeGuide from './pages/SizeGuide';
 import { CartProvider } from './context/CartContext';
 
 const ScrollToTop = () => {
@@ -35,6 +39,10 @@ const App: React.FC = () => {
               <Route path="/about" element={<About />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/shipping-returns" element={<Shipping />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/size-guide" element={<SizeGuide />} />
             </Routes>
           </main>
           <AIStylist />
