@@ -87,6 +87,9 @@ export default async function handler(req: any, res: any) {
     res.status(200).json({ reply: result.text || "I didn't catch that." });
   } catch (error) {
     console.error('Gemini API error:', error);
-    res.status(502).json({ error: 'Failed to reach the styling service' });
+    // Vercel Hobby plan doesn't expose function logs, so surface the error
+    // message in the response body to make this debuggable via curl.
+    const detail = error instanceof Error ? error.message : String(error);
+    res.status(502).json({ error: 'Failed to reach the styling service', detail });
   }
 }
