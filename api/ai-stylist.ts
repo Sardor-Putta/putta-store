@@ -69,7 +69,9 @@ export default async function handler(req: any, res: any) {
   try {
     const ai = new GoogleGenAI({ apiKey });
     const chat = ai.chats.create({
-      model: 'gemini-2.5-flash',
+      // Use the rolling "-latest" alias instead of a dated snapshot
+      // (gemini-2.5-flash was sunset for new API keys — see commit history).
+      model: 'gemini-flash-latest',
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
         temperature: 0.7,
