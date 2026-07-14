@@ -2,14 +2,30 @@
 // never reaches the browser bundle. Configure GEMINI_API_KEY as an
 // environment variable in the Vercel project settings.
 import { GoogleGenAI } from '@google/genai';
-import { PRODUCTS } from '../constants';
+
+// Intentionally duplicated from constants.ts instead of imported: a relative
+// import reaching outside api/ is a known source of "works locally, crashes
+// at module load on Vercel" failures for Node serverless functions. Keep this
+// list in sync with the PRODUCTS array in constants.ts by hand.
+const CATALOG_ITEMS = [
+  { name: 'PUTTA CORE TEE – NOIR', category: 'Tops', price: 95 },
+  { name: 'PUTTA CORE TEE – BONE', category: 'Tops', price: 95 },
+  { name: 'PUTTA CORE TEE – STEEL GREY', category: 'Tops', price: 95 },
+  { name: 'PUTTA CORE TEE – SKY', category: 'Tops', price: 95 },
+  { name: 'PUTTA CORE HOODIE – NOIR', category: 'Hoodies', price: 129 },
+  { name: 'PUTTA LONG SLEEVE – BONE', category: 'Tops', price: 79 },
+  { name: 'PUTTA SIGNATURE CAP – BLACK', category: 'Accessories', price: 49 },
+  { name: 'PUTTA CORE TEE – WHITE', category: 'Tops', price: 95 },
+  { name: 'PUTTA OVERSIZED HOODIE – GREY', category: 'Hoodies', price: 139 },
+  { name: 'PUTTA ESSENTIAL PANTS – BLACK', category: 'Bottoms', price: 119 },
+];
 
 function extractColor(name: string): string {
   const parts = name.split('–');
   return parts.length > 1 ? parts[parts.length - 1].trim() : '';
 }
 
-const CATALOG = PRODUCTS.map(
+const CATALOG = CATALOG_ITEMS.map(
   p => `- ${p.name} | category: ${p.category} | color: ${extractColor(p.name)} | price: $${p.price}`
 ).join('\n');
 
