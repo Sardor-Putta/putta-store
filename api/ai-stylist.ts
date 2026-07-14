@@ -75,7 +75,11 @@ export default async function handler(req: any, res: any) {
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
         temperature: 0.7,
-        maxOutputTokens: 220,
+        maxOutputTokens: 300,
+        // Flash-tier models "think" by default, which eats into
+        // maxOutputTokens and was truncating replies to fragments.
+        // A short styling suggestion doesn't need chain-of-thought.
+        thinkingConfig: { thinkingBudget: 0 },
       },
       history: Array.isArray(history)
         ? history.map((h: { role: 'user' | 'model'; text: string }) => ({
