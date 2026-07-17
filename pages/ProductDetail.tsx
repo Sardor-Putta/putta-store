@@ -10,11 +10,14 @@ const ProductDetail: React.FC = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
-  
+  const [selectedImage, setSelectedImage] = useState(0);
+
   const product = PRODUCTS.find(p => p.id === id);
+  const gallery = product?.images?.length ? product.images : product ? [product.image] : [];
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setSelectedImage(0);
   }, [id]);
 
   if (!product) {
@@ -35,23 +38,39 @@ const ProductDetail: React.FC = () => {
     <div className="min-h-screen bg-neutral-950 pt-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]">
         {/* Image Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           className="relative h-[50vh] lg:h-auto bg-neutral-900 overflow-hidden"
         >
-          <img 
-            src={product.image} 
-            alt={product.name} 
+          <img
+            src={gallery[selectedImage]}
+            alt={product.name}
             className="w-full h-full object-cover"
           />
-          <button 
+          <button
             onClick={() => navigate(-1)}
             className="absolute top-6 left-6 text-white/80 hover:text-white bg-black/20 hover:bg-black/40 p-2 rounded-full backdrop-blur-sm transition-all"
           >
             <ArrowLeft size={24} />
           </button>
+
+          {gallery.length > 1 && (
+            <div className="absolute bottom-6 left-6 right-6 flex gap-3 overflow-x-auto">
+              {gallery.map((src, index) => (
+                <button
+                  key={src}
+                  onClick={() => setSelectedImage(index)}
+                  className={`w-16 h-20 flex-shrink-0 overflow-hidden border-2 transition-colors ${
+                    index === selectedImage ? 'border-white' : 'border-transparent opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <img src={src} alt={`${product.name} ${index + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
         </motion.div>
 
         {/* Details Section */}

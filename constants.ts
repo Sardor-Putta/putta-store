@@ -4,7 +4,13 @@ export const PRODUCTS: Product[] = [
   name: 'PUTTA CORE TEE – NOIR',
   price: 95,
   category: 'Tops',
-  image: 'https://raw.githubusercontent.com/Sardor-Putta/putta-store/refs/heads/main/127b335a-d390-4d97-894b-af4f1532c679.png',
+  image: '/products/tee-noir/tshirt-04-flat.png',
+  images: [
+    '/products/tee-noir/tshirt-04-flat.png',
+    '/products/tee-noir/tshirt-03-hanger.png',
+    '/products/tee-noir/tshirt-02-logo-closeup.png',
+    '/products/tee-noir/tshirt-01-collar-detail.png',
+  ],
   description: 'Premium heavyweight cotton. Oversized fit. Luxury street essential.',
   sizes: ['S', 'M', 'L', 'XL', 'XXL']
 },
@@ -40,7 +46,13 @@ export const PRODUCTS: Product[] = [
   name: 'PUTTA CORE HOODIE – NOIR',
   price: 129,
   category: 'Hoodies',
-  image: 'https://picsum.photos/seed/putta_hoodie/600/800',
+  image: '/products/hoodie-noir/hoodie-01-front.png',
+  images: [
+    '/products/hoodie-noir/hoodie-01-front.png',
+    '/products/hoodie-noir/hoodie-02-back.png',
+    '/products/hoodie-noir/hoodie-03-hanger.png',
+    '/products/hoodie-noir/hoodie-04-ghost-mannequin.png',
+  ],
   description: 'Heavyweight cotton hoodie. Structured oversized silhouette.',
   sizes: ['S', 'M', 'L', 'XL']
 },
@@ -85,7 +97,13 @@ export const PRODUCTS: Product[] = [
   name: 'PUTTA ESSENTIAL PANTS – BLACK',
   price: 119,
   category: 'Bottoms',
-  image: 'https://picsum.photos/seed/putta_pants_black/600/800',
+  image: '/products/pants-black/pants-04-flat-side.png',
+  images: [
+    '/products/pants-black/pants-04-flat-side.png',
+    '/products/pants-black/pants-01-waistband-detail-a.png',
+    '/products/pants-black/pants-02-waistband-detail-b.png',
+    '/products/pants-black/pants-03-label-closeup.png',
+  ],
   description: 'Minimal street pants. Clean fit.',
   sizes: ['S', 'M', 'L', 'XL']
 }

@@ -4,6 +4,8 @@ export interface Product {
   price: number;
   category: string;
   image: string;
+  /** Optional gallery for the product detail page. Falls back to `image` if omitted. */
+  images?: string[];
   description: string;
   sizes: string[];
 }
