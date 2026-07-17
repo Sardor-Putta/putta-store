@@ -13,10 +13,10 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="https://picsum.photos/seed/puttahero/1920/1080" 
-            alt="Hero" 
-            className="w-full h-full object-cover grayscale opacity-60"
+          <img
+            src="/campaign/campaign-03-model-full-outfit-beach.webp"
+            alt="Hero"
+            className="w-full h-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
         </div>
@@ -73,10 +73,10 @@ const Home: React.FC = () => {
       {/* Editorial Banner */}
       <section className="py-12">
         <div className="relative h-[60vh] w-full overflow-hidden">
-          <img 
-            src="https://picsum.photos/seed/puttaeditorial/1920/800" 
-            alt="Editorial" 
-            className="w-full h-full object-cover grayscale"
+          <img
+            src="/campaign/campaign-02-model-hoodie-beach.webp"
+            alt="Editorial"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <div className="text-center">
