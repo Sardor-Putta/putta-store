@@ -36,6 +36,13 @@
     "connectionError": "Stilist serveriga ulanib bo'lmayapti. Qaytadan urinib ko'ring.",
     "noReply": "Javobni tushuna olmadim."
   },
+  "supportChat": {
+    "welcome": "Salom! Men PUTTA qo'llab-quvvatlash xizmatiman. Yetkazib berish, qaytarish, o'lcham yoki buyurtma bo'yicha yordam bera olaman — nima kerak?",
+    "placeholder": "Yordam xizmatiga savol bering...",
+    "header": "PUTTA YORDAM",
+    "connectionError": "Yordam serveriga ulanib bo'lmayapti. Qaytadan urinib ko'ring.",
+    "noReply": "Javobni tushuna olmadim."
+  },
   "home": {
     "heroTitle": "SUKUNAT BAQIRIQDAN KUCHLI",
     "heroSubtitle": "01-MAVSUM: GENESIS KOLLEKSIYASI",

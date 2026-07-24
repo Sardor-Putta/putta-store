@@ -36,6 +36,13 @@
     "connectionError": "I'm having trouble connecting to the styling server. Try again.",
     "noReply": "I didn't catch that."
   },
+  "supportChat": {
+    "welcome": "Hi! I'm PUTTA support. I can help with shipping, returns, sizing, or your order — what do you need?",
+    "placeholder": "Ask support a question...",
+    "header": "PUTTA SUPPORT",
+    "connectionError": "I'm having trouble connecting to the support server. Try again.",
+    "noReply": "I didn't catch that."
+  },
   "home": {
     "heroTitle": "SILENCE IS LOUD",
     "heroSubtitle": "SEASON 01: GENESIS COLLECTION",

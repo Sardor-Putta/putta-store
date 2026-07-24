@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AIStylist from './components/AIStylist';
+import SupportChat from './components/SupportChat';
 import Cart from './components/Cart';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
@@ -48,6 +49,7 @@ const App: React.FC = () => {
               </Routes>
             </main>
             <AIStylist />
+            <SupportChat />
             <Cart />
             <Footer />
           </div>
