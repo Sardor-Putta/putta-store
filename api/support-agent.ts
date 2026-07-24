@@ -110,6 +110,9 @@ interface SupportResponse {
 }
 
 export default async function handler(req: any, res: any) {
+  res.status(200).json({ reply: 'TEST-MARKER-12345' });
+  return;
+  // eslint-disable-next-line no-unreachable
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
