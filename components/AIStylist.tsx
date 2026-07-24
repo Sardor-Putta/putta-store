@@ -3,11 +3,13 @@ import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 const AIStylist: React.FC = () => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Welcome to PUTTA. I am your personal stylist. Need help with sizing or a look?' }
+    { role: 'model', text: t('aiStylist.welcome') }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -32,8 +34,11 @@ const AIStylist: React.FC = () => {
     // Prepare history for context (excluding the just added message for the API call logic if needed, 
     // but our service handles history reconstruction)
     const responseText = await sendMessageToGemini(messages, input);
-    
-    setMessages(prev => [...prev, { role: 'model', text: responseText }]);
+    const displayText = responseText === null
+      ? t('aiStylist.connectionError')
+      : responseText || t('aiStylist.noReply');
+
+    setMessages(prev => [...prev, { role: 'model', text: displayText }]);
     setIsLoading(false);
   };
 
@@ -66,7 +71,7 @@ const AIStylist: React.FC = () => {
             <div className="p-4 border-b border-neutral-800 flex justify-between items-center bg-neutral-950">
               <div className="flex items-center space-x-2">
                 <Sparkles size={16} className="text-neutral-400" />
-                <span className="text-sm font-bold tracking-widest text-white">PUTTA STYLIST</span>
+                <span className="text-sm font-bold tracking-widest text-white">{t('aiStylist.header')}</span>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-neutral-500 hover:text-white">
                 <X size={20} />
@@ -111,7 +116,7 @@ const AIStylist: React.FC = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
-                  placeholder="Ask about sizing or style..."
+                  placeholder={t('aiStylist.placeholder')}
                   className="flex-1 bg-transparent text-sm text-white placeholder-neutral-600 focus:outline-none"
                 />
                 <button

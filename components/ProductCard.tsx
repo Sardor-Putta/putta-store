@@ -3,6 +3,7 @@ import { Product } from '../types';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ProductCardProps {
   product: Product;
@@ -10,6 +11,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
+  const { t } = useLanguage();
 
   const handleSizeClick = (e: React.MouseEvent, size: string) => {
     e.preventDefault(); // Prevent navigation when clicking size
@@ -34,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
             <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 w-full px-4">
-               <p className="text-white text-xs tracking-widest mb-4 font-bold">QUICK ADD</p>
+               <p className="text-white text-xs tracking-widest mb-4 font-bold">{t('common.quickAdd')}</p>
                <div className="flex flex-wrap gap-2 justify-center">
                  {product.sizes.map(size => (
                    <button 
@@ -52,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="flex justify-between items-start">
           <div>
             <h3 className="text-sm font-medium text-white tracking-wide uppercase group-hover:text-neutral-300 transition-colors">{product.name}</h3>
-            <p className="text-xs text-neutral-500 mt-1">{product.category}</p>
+            <p className="text-xs text-neutral-500 mt-1">{t(`categories.${product.category.toLowerCase()}`)}</p>
           </div>
           <span className="text-sm text-neutral-300">${product.price}</span>
         </div>

@@ -2,20 +2,22 @@ import React from 'react';
 import { PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Shop: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-neutral-950 pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-16 text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">ALL PRODUCTS</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">{t('shop.title')}</h1>
           <p className="text-neutral-500 mt-4 text-sm tracking-[0.3em] uppercase">
-  Core Essentials. Elevated Minimalism.
-</p>
+            {t('shop.subtitle')}
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">

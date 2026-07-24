@@ -2,8 +2,10 @@ import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
+import { useLanguage } from '../context/LanguageContext';
 
 const Collections: React.FC = () => {
+  const { t } = useLanguage();
   const categories = useMemo(
     () => ['All', ...Array.from(new Set(PRODUCTS.map(p => p.category)))],
     []
@@ -14,6 +16,9 @@ const Collections: React.FC = () => {
     ? PRODUCTS
     : PRODUCTS.filter(p => p.category === activeCategory);
 
+  const categoryLabel = (category: string) =>
+    category === 'All' ? t('collections.all') : t(`categories.${category.toLowerCase()}`);
+
   return (
     <div className="min-h-screen bg-neutral-950 pt-32 pb-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -22,10 +27,10 @@ const Collections: React.FC = () => {
           animate={{ opacity: 1 }}
           className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 text-center"
         >
-          ARCHIVE
+          {t('collections.title')}
         </motion.h1>
         <p className="text-neutral-500 text-center text-sm tracking-[0.3em] uppercase mb-16">
-          Season 01: Genesis Collection
+          {t('collections.subtitle')}
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-16">
@@ -39,7 +44,7 @@ const Collections: React.FC = () => {
                   : 'bg-transparent text-neutral-400 border-neutral-800 hover:border-neutral-500 hover:text-white'
               }`}
             >
-              {category}
+              {categoryLabel(category)}
             </button>
           ))}
         </div>
@@ -59,7 +64,7 @@ const Collections: React.FC = () => {
 
         {filteredProducts.length === 0 && (
           <p className="text-center text-neutral-500 text-sm tracking-widest mt-24">
-            NO PIECES IN THIS CATEGORY YET
+            {t('collections.noPieces')}
           </p>
         )}
       </div>

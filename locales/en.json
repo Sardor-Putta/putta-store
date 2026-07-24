@@ -1,0 +1,180 @@
+{
+  "nav": {
+    "home": "HOME",
+    "shop": "SHOP",
+    "collections": "COLLECTIONS",
+    "about": "ABOUT"
+  },
+  "common": {
+    "quickAdd": "QUICK ADD"
+  },
+  "footer": {
+    "tagline": "Redefining modern luxury through silence and form. Designed for the individual who speaks without words.",
+    "explore": "EXPLORE",
+    "shopAll": "Shop All",
+    "collections": "Collections",
+    "support": "SUPPORT",
+    "contactUs": "Contact Us",
+    "shippingReturns": "Shipping & Returns",
+    "sizeGuide": "Size Guide",
+    "faq": "FAQ",
+    "rights": "All rights reserved."
+  },
+  "cart": {
+    "title": "CART",
+    "empty": "YOUR CART IS EMPTY",
+    "continueShopping": "CONTINUE SHOPPING",
+    "size": "SIZE",
+    "remove": "REMOVE",
+    "subtotal": "SUBTOTAL",
+    "checkout": "CHECKOUT"
+  },
+  "aiStylist": {
+    "welcome": "Welcome to PUTTA. I am your personal stylist. Need help with sizing or a look?",
+    "placeholder": "Ask about sizing or style...",
+    "header": "PUTTA STYLIST",
+    "connectionError": "I'm having trouble connecting to the styling server. Try again.",
+    "noReply": "I didn't catch that."
+  },
+  "home": {
+    "heroTitle": "SILENCE IS LOUD",
+    "heroSubtitle": "SEASON 01: GENESIS COLLECTION",
+    "shopNow": "SHOP NOW",
+    "latestArrivals": "LATEST ARRIVALS",
+    "viewAll": "VIEW ALL",
+    "editorialTitle": "THE UNIFORM",
+    "editorialSubtitle": "ENGINEERED FOR THE MODERN METROPOLIS",
+    "exploreCampaign": "EXPLORE CAMPAIGN"
+  },
+  "shop": {
+    "title": "ALL PRODUCTS",
+    "subtitle": "Core Essentials. Elevated Minimalism."
+  },
+  "collections": {
+    "title": "ARCHIVE",
+    "subtitle": "Season 01: Genesis Collection",
+    "all": "ALL",
+    "noPieces": "NO PIECES IN THIS CATEGORY YET"
+  },
+  "about": {
+    "title": "WE ARE PUTTA.",
+    "p1": "Born in the void between luxury and utility. PUTTA represents a rejection of the unnecessary. We believe in the power of silence, structure, and form.",
+    "p2": "Our garments are engineered for the modern individual who navigates the chaos of the city with calm confidence. We use premium materials, architectural cuts, and a monochromatic palette to create a uniform for the new era.",
+    "p3": "We are not just a brand. We are a state of mind.",
+    "craftsmanshipTitle": "CRAFTSMANSHIP",
+    "craftsmanshipText": "Every piece is constructed with meticulous attention to detail. From the weight of the cotton to the finish of the hardware, nothing is overlooked.",
+    "sustainabilityTitle": "SUSTAINABILITY",
+    "sustainabilityText": "We produce in limited quantities to minimize waste. Our materials are sourced responsibly, prioritizing longevity over trends."
+  },
+  "productDetail": {
+    "notFound": "Product not found.",
+    "engineeredText": "Engineered for durability and comfort. A staple piece for the modern wardrobe.",
+    "selectSize": "SELECT SIZE",
+    "sizeGuide": "Size Guide",
+    "pleaseSelectSize": "Please select a size",
+    "addToCart": "ADD TO CART",
+    "selectASize": "SELECT A SIZE",
+    "inStock": "In Stock",
+    "freeShipping": "Free Shipping Worldwide",
+    "returns30": "30 Day Returns"
+  },
+  "checkout": {
+    "backToShop": "BACK TO SHOP",
+    "title": "CHECKOUT",
+    "shippingDetails": "SHIPPING DETAILS",
+    "fullName": "FULL NAME",
+    "phoneNumber": "PHONE NUMBER",
+    "city": "CITY",
+    "deliveryAddress": "DELIVERY ADDRESS",
+    "postalCode": "POSTAL CODE",
+    "country": "COUNTRY",
+    "placeOrder": "PLACE ORDER",
+    "processing": "PROCESSING...",
+    "submitError": "We couldn't submit your order right now. Please try again in a moment.",
+    "orderSummary": "ORDER SUMMARY",
+    "subtotalLabel": "Subtotal",
+    "shippingLabel": "Shipping",
+    "free": "Free",
+    "total": "TOTAL",
+    "orderConfirmed": "ORDER CONFIRMED",
+    "thankYou": "Thank you for your purchase. Your order is being processed.",
+    "returnHome": "RETURN HOME",
+    "size": "SIZE",
+    "qty": "QTY",
+    "phoneTitle": "Enter a valid phone number (digits, spaces, +, -, () allowed)",
+    "postalTitle": "Enter a valid postal code",
+    "namePlaceholder": "John Doe",
+    "phonePlaceholder": "+1 (555) 000-0000",
+    "cityPlaceholder": "New York",
+    "addressPlaceholder": "123 Street Name, Apt 4B",
+    "postalPlaceholder": "10001",
+    "countries": {
+      "us": "United States",
+      "ca": "Canada",
+      "gb": "United Kingdom",
+      "jp": "Japan"
+    }
+  },
+  "categories": {
+    "tops": "Tops",
+    "hoodies": "Hoodies",
+    "accessories": "Accessories",
+    "bottoms": "Bottoms"
+  },
+  "pages": {
+    "shipping": {
+      "title": "SHIPPING & RETURNS",
+      "shippingHeading": "SHIPPING",
+      "freeShippingText": "Free worldwide shipping on all orders.",
+      "processedText": "Orders are processed within 1–3 business days. Once dispatched, delivery typically takes:",
+      "domestic": "Domestic: 3–5 business days",
+      "international": "International: 7–14 business days",
+      "confirmationText": "You'll receive a confirmation with tracking details once your order ships.",
+      "returnsHeading": "RETURNS",
+      "returnsText1": "We accept returns within 30 days of delivery, provided items are unworn, unwashed, and in original packaging with tags attached.",
+      "returnsText2": "To start a return, contact us with your order details and reason for return. We'll confirm the return address and next steps.",
+      "refundsText": "Refunds are issued to the original payment method once the returned item is received and inspected.",
+      "exchangesHeading": "EXCHANGES",
+      "exchangesText": "Need a different size? Reach out and we'll arrange an exchange for you, subject to availability."
+    },
+    "faq": {
+      "title": "FAQ",
+      "items": [
+        { "q": "How do I place an order?", "a": "Add items to your cart, select a size, and check out with your shipping details. Our team will reach out shortly after to confirm your order and arrange payment." },
+        { "q": "How long does shipping take?", "a": "Domestic orders arrive in 3–5 business days, international orders in 7–14 business days, after 1–3 business days of processing. Shipping is free worldwide." },
+        { "q": "What is your return policy?", "a": "Returns are accepted within 30 days of delivery for unworn, unwashed items with tags attached. See our Shipping & Returns page for full details." },
+        { "q": "How do I choose the right size?", "a": "Check the size selector on each product page, or ask our AI Stylist for a recommendation based on your height and weight." },
+        { "q": "Can I change or cancel my order?", "a": "Yes — contact us as soon as possible after checkout. Once an order has shipped, changes are no longer possible." }
+      ]
+    },
+    "contact": {
+      "title": "CONTACT US",
+      "text": "Questions about an order, sizing, or anything else? Reach out and our team will get back to you.",
+      "comingSoon": "Contact details coming soon."
+    },
+    "sizeGuide": {
+      "title": "SIZE GUIDE",
+      "subtitle": "PUTTA runs true to an oversized fit. Measurements below are approximate — for a more relaxed look, size up.",
+      "topsHoodies": "TOPS & HOODIES",
+      "bottoms": "BOTTOMS",
+      "size": "Size",
+      "chest": "Chest",
+      "length": "Length",
+      "waist": "Waist",
+      "inseam": "Inseam",
+      "stillUnsure": "Still unsure? Ask the PUTTA AI Stylist for a size recommendation based on your height and weight."
+    }
+  },
+  "products": {
+    "1": { "description": "Premium heavyweight cotton. Oversized fit. Luxury street essential." },
+    "2": { "description": "Cream tone-on-tone aesthetic. Soft structured silhouette." },
+    "3": { "description": "Cold grey minimalism. Drop shoulder. Clean power." },
+    "4": { "description": "Muted sky blue. Premium cotton. Elevated everyday wear." },
+    "5": { "description": "Heavyweight cotton hoodie. Structured oversized silhouette." },
+    "6": { "description": "Minimal long sleeve. Clean structure. Elevated daily wear." },
+    "7": { "description": "Structured cap with minimal embroidered branding." },
+    "8": { "description": "Clean white minimal tee. Premium cotton." },
+    "9": { "description": "Heavy oversized hoodie. Street silhouette." },
+    "10": { "description": "Minimal street pants. Clean fit." }
+  }
+}

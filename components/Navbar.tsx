@@ -3,19 +3,22 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { toggleCart, cartCount } = useCart();
+  const { t } = useLanguage();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { path: '/', label: 'HOME' },
-    { path: '/shop', label: 'SHOP' },
-    { path: '/collections', label: 'COLLECTIONS' },
-    { path: '/about', label: 'ABOUT' },
+    { path: '/', label: t('nav.home') },
+    { path: '/shop', label: t('nav.shop') },
+    { path: '/collections', label: t('nav.collections') },
+    { path: '/about', label: t('nav.about') },
   ];
 
   return (
@@ -43,7 +46,8 @@ const Navbar: React.FC = () => {
 
         {/* Icons */}
         <div className="flex items-center space-x-6 z-50">
-          <button 
+          <LanguageSwitcher />
+          <button
             onClick={toggleCart}
             className="text-neutral-400 hover:text-white transition-colors relative"
           >

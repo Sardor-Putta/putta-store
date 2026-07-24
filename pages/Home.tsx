@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
+import { useLanguage } from '../context/LanguageContext';
 
 const Home: React.FC = () => {
+  const { t } = useLanguage();
   const featuredProducts = PRODUCTS.slice(0, 3);
 
   return (
@@ -28,15 +30,15 @@ const Home: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-6"
           >
-            SILENCE IS LOUD
+            {t('home.heroTitle')}
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-neutral-300 text-lg md:text-xl tracking-widest mb-10 max-w-lg"
           >
-            SEASON 01: GENESIS COLLECTION
+            {t('home.heroSubtitle')}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +49,7 @@ const Home: React.FC = () => {
               to="/shop" 
               className="group inline-flex items-center space-x-2 bg-white text-black px-8 py-4 text-sm font-bold tracking-widest hover:bg-neutral-200 transition-colors"
             >
-              <span>SHOP NOW</span>
+              <span>{t('home.shopNow')}</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -57,9 +59,9 @@ const Home: React.FC = () => {
       {/* Featured Section */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-12">
-          <h2 className="text-3xl font-bold text-white tracking-tight">LATEST ARRIVALS</h2>
+          <h2 className="text-3xl font-bold text-white tracking-tight">{t('home.latestArrivals')}</h2>
           <Link to="/shop" className="text-sm text-neutral-400 hover:text-white transition-colors tracking-widest border-b border-transparent hover:border-white pb-1">
-            VIEW ALL
+            {t('home.viewAll')}
           </Link>
         </div>
         
@@ -80,10 +82,10 @@ const Home: React.FC = () => {
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <div className="text-center">
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tighter">THE UNIFORM</h2>
-              <p className="text-neutral-300 mb-8 tracking-widest">ENGINEERED FOR THE MODERN METROPOLIS</p>
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tighter">{t('home.editorialTitle')}</h2>
+              <p className="text-neutral-300 mb-8 tracking-widest">{t('home.editorialSubtitle')}</p>
               <Link to="/collections" className="text-white border border-white px-8 py-3 text-xs tracking-[0.2em] hover:bg-white hover:text-black transition-all">
-                EXPLORE CAMPAIGN
+                {t('home.exploreCampaign')}
               </Link>
             </div>
           </div>

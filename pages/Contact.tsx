@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-neutral-950 pt-32 pb-24 px-6">
       <div className="max-w-4xl mx-auto">
@@ -11,16 +14,16 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-12">
-            CONTACT US
+            {t('pages.contact.title')}
           </h1>
 
           <div className="text-neutral-400 leading-relaxed space-y-6">
             <p>
-              Questions about an order, sizing, or anything else? Reach out and our team will get back to you.
+              {t('pages.contact.text')}
             </p>
             {/* TODO: replace with real support contact details before launch */}
             <p className="text-white font-bold tracking-widest text-sm">
-              Contact details coming soon.
+              {t('pages.contact.comingSoon')}
             </p>
           </div>
         </motion.div>

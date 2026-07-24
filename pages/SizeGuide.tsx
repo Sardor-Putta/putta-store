@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const TOP_SIZES = [
   { size: 'S', chest: '38–40"', length: '27"' },
@@ -17,6 +18,8 @@ const BOTTOM_SIZES = [
 ];
 
 const SizeGuide: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-neutral-950 pt-32 pb-24 px-6">
       <div className="max-w-4xl mx-auto">
@@ -26,22 +29,22 @@ const SizeGuide: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-4">
-            SIZE GUIDE
+            {t('pages.sizeGuide.title')}
           </h1>
           <p className="text-neutral-500 mb-12">
-            PUTTA runs true to an oversized fit. Measurements below are approximate — for a more relaxed look, size up.
+            {t('pages.sizeGuide.subtitle')}
           </p>
 
           <div className="space-y-16">
             <section>
-              <h2 className="text-white font-bold tracking-widest text-sm mb-6">TOPS &amp; HOODIES</h2>
+              <h2 className="text-white font-bold tracking-widest text-sm mb-6">{t('pages.sizeGuide.topsHoodies')}</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left text-neutral-400">
                   <thead>
                     <tr className="border-b border-neutral-800 text-white">
-                      <th className="py-3 pr-6">Size</th>
-                      <th className="py-3 pr-6">Chest</th>
-                      <th className="py-3">Length</th>
+                      <th className="py-3 pr-6">{t('pages.sizeGuide.size')}</th>
+                      <th className="py-3 pr-6">{t('pages.sizeGuide.chest')}</th>
+                      <th className="py-3">{t('pages.sizeGuide.length')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,14 +61,14 @@ const SizeGuide: React.FC = () => {
             </section>
 
             <section>
-              <h2 className="text-white font-bold tracking-widest text-sm mb-6">BOTTOMS</h2>
+              <h2 className="text-white font-bold tracking-widest text-sm mb-6">{t('pages.sizeGuide.bottoms')}</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left text-neutral-400">
                   <thead>
                     <tr className="border-b border-neutral-800 text-white">
-                      <th className="py-3 pr-6">Size</th>
-                      <th className="py-3 pr-6">Waist</th>
-                      <th className="py-3">Inseam</th>
+                      <th className="py-3 pr-6">{t('pages.sizeGuide.size')}</th>
+                      <th className="py-3 pr-6">{t('pages.sizeGuide.waist')}</th>
+                      <th className="py-3">{t('pages.sizeGuide.inseam')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -82,7 +85,7 @@ const SizeGuide: React.FC = () => {
             </section>
 
             <p className="text-neutral-500 text-sm">
-              Still unsure? Ask the PUTTA AI Stylist for a size recommendation based on your height and weight.
+              {t('pages.sizeGuide.stillUnsure')}
             </p>
           </div>
         </motion.div>

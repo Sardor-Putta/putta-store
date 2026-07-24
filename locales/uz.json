@@ -1,0 +1,180 @@
+{
+  "nav": {
+    "home": "BOSH SAHIFA",
+    "shop": "DO'KON",
+    "collections": "KOLLEKSIYALAR",
+    "about": "BIZ HAQIMIZDA"
+  },
+  "common": {
+    "quickAdd": "TEZ QO'SHISH"
+  },
+  "footer": {
+    "tagline": "Zamonaviy hashamatni sukunat va shakl orqali qayta anglaymiz. So'zsiz gapiradigan insonlar uchun yaratilgan.",
+    "explore": "BO'LIMLAR",
+    "shopAll": "Barcha mahsulotlar",
+    "collections": "Kolleksiyalar",
+    "support": "YORDAM",
+    "contactUs": "Biz bilan bog'laning",
+    "shippingReturns": "Yetkazib berish va qaytarish",
+    "sizeGuide": "O'lcham jadvali",
+    "faq": "Savol-javob",
+    "rights": "Barcha huquqlar himoyalangan."
+  },
+  "cart": {
+    "title": "SAVAT",
+    "empty": "SAVATINGIZ BO'SH",
+    "continueShopping": "XARIDNI DAVOM ETTIRISH",
+    "size": "O'LCHAM",
+    "remove": "O'CHIRISH",
+    "subtotal": "ORALIQ JAMI",
+    "checkout": "BUYURTMA BERISH"
+  },
+  "aiStylist": {
+    "welcome": "PUTTA'ga xush kelibsiz. Men sizning shaxsiy stilistingizman. O'lcham yoki obraz bo'yicha yordam kerakmi?",
+    "placeholder": "O'lcham yoki uslub haqida so'rang...",
+    "header": "PUTTA STYLIST",
+    "connectionError": "Stilist serveriga ulanib bo'lmayapti. Qaytadan urinib ko'ring.",
+    "noReply": "Javobni tushuna olmadim."
+  },
+  "home": {
+    "heroTitle": "SUKUNAT BAQIRIQDAN KUCHLI",
+    "heroSubtitle": "01-MAVSUM: GENESIS KOLLEKSIYASI",
+    "shopNow": "HOZIR XARID QILING",
+    "latestArrivals": "YANGI MAHSULOTLAR",
+    "viewAll": "BARCHASINI KO'RISH",
+    "editorialTitle": "UNIFORMA",
+    "editorialSubtitle": "ZAMONAVIY METROPOLIYA UCHUN YARATILGAN",
+    "exploreCampaign": "KAMPANIYANI KO'RISH"
+  },
+  "shop": {
+    "title": "BARCHA MAHSULOTLAR",
+    "subtitle": "Asosiy buyumlar. Yuksak minimalizm."
+  },
+  "collections": {
+    "title": "ARXIV",
+    "subtitle": "01-mavsum: Genesis kolleksiyasi",
+    "all": "BARCHASI",
+    "noPieces": "BU TOIFADA HALI MAHSULOT YO'Q"
+  },
+  "about": {
+    "title": "BIZ — PUTTA.",
+    "p1": "Hashamat va foydalilik oralig'idagi bo'shliqda tug'ilgan. PUTTA — bu ortiqchalikdan voz kechish. Biz sukunat, tuzilma va shaklning kuchiga ishonamiz.",
+    "p2": "Bizning kiyimlarimiz shahar tartibsizligida xotirjam ishonch bilan harakatlanadigan zamonaviy inson uchun yaratilgan. Yangi davr uchun uniforma yaratish uchun premium materiallar, arxitektura kesimlari va monoxrom palitradan foydalanamiz.",
+    "p3": "Biz shunchaki brend emasmiz. Biz — bir xil fikrlash tarzimiz.",
+    "craftsmanshipTitle": "USTALIK",
+    "craftsmanshipText": "Har bir buyum diqqat bilan, mayda tafsilotlargacha ishlab chiqiladi. Paxta zichligidan tortib furnitura pardozigacha — hech narsa e'tibordan chetda qolmaydi.",
+    "sustainabilityTitle": "BARQARORLIK",
+    "sustainabilityText": "Chiqindilarni kamaytirish uchun cheklangan partiyalarda ishlab chiqaramiz. Materiallar mas'uliyat bilan tanlanadi — uzoq muddat trenddan ustun turadi."
+  },
+  "productDetail": {
+    "notFound": "Mahsulot topilmadi.",
+    "engineeredText": "Chidamlilik va qulaylik uchun yaratilgan. Zamonaviy garderobning asosiy buyumi.",
+    "selectSize": "O'LCHAMNI TANLANG",
+    "sizeGuide": "O'lcham jadvali",
+    "pleaseSelectSize": "Iltimos, o'lchamni tanlang",
+    "addToCart": "SAVATGA QO'SHISH",
+    "selectASize": "O'LCHAM TANLANG",
+    "inStock": "Mavjud",
+    "freeShipping": "Dunyo bo'ylab bepul yetkazib berish",
+    "returns30": "30 kun ichida qaytarish"
+  },
+  "checkout": {
+    "backToShop": "DO'KONGA QAYTISH",
+    "title": "BUYURTMANI RASMIYLASHTIRISH",
+    "shippingDetails": "YETKAZIB BERISH MA'LUMOTLARI",
+    "fullName": "TO'LIQ ISM",
+    "phoneNumber": "TELEFON RAQAMI",
+    "city": "SHAHAR",
+    "deliveryAddress": "YETKAZIB BERISH MANZILI",
+    "postalCode": "POCHTA INDEKSI",
+    "country": "MAMLAKAT",
+    "placeOrder": "BUYURTMA BERISH",
+    "processing": "QAYTA ISHLANMOQDA...",
+    "submitError": "Buyurtmangizni hozircha yubora olmadik. Birozdan so'ng qaytadan urinib ko'ring.",
+    "orderSummary": "BUYURTMA TARKIBI",
+    "subtotalLabel": "Oraliq jami",
+    "shippingLabel": "Yetkazib berish",
+    "free": "Bepul",
+    "total": "JAMI",
+    "orderConfirmed": "BUYURTMA TASDIQLANDI",
+    "thankYou": "Xaridingiz uchun rahmat. Buyurtmangiz qayta ishlanmoqda.",
+    "returnHome": "BOSH SAHIFAGA",
+    "size": "O'LCHAM",
+    "qty": "SONI",
+    "phoneTitle": "To'g'ri telefon raqamini kiriting (raqamlar, bo'shliqlar, +, -, () mumkin)",
+    "postalTitle": "To'g'ri pochta indeksini kiriting",
+    "namePlaceholder": "Ism Familiya",
+    "phonePlaceholder": "+998 90 000 00 00",
+    "cityPlaceholder": "Toshkent",
+    "addressPlaceholder": "Ko'cha, uy, xonadon",
+    "postalPlaceholder": "100000",
+    "countries": {
+      "us": "Amerika Qo'shma Shtatlari",
+      "ca": "Kanada",
+      "gb": "Buyuk Britaniya",
+      "jp": "Yaponiya"
+    }
+  },
+  "categories": {
+    "tops": "Ustki kiyim",
+    "hoodies": "Xudi",
+    "accessories": "Aksessuarlar",
+    "bottoms": "Pastki kiyim"
+  },
+  "pages": {
+    "shipping": {
+      "title": "YETKAZIB BERISH VA QAYTARISH",
+      "shippingHeading": "YETKAZIB BERISH",
+      "freeShippingText": "Barcha buyurtmalar uchun dunyo bo'ylab bepul yetkazib berish.",
+      "processedText": "Buyurtmalar 1–3 ish kuni ichida qayta ishlanadi. Jo'natilgandan so'ng yetkazib berish odatda quyidagicha davom etadi:",
+      "domestic": "Mamlakat ichida: 3–5 ish kuni",
+      "international": "Xalqaro: 7–14 ish kuni",
+      "confirmationText": "Buyurtmangiz jo'natilgandan so'ng kuzatuv ma'lumotlari bilan tasdiqlash xabarini olasiz.",
+      "returnsHeading": "QAYTARISH",
+      "returnsText1": "Yetkazib berilgan kundan boshlab 30 kun ichida, kiyilmagan, yuvilmagan va original o'ramda, yorliqlari bilan bo'lsa, qaytarishni qabul qilamiz.",
+      "returnsText2": "Qaytarishni boshlash uchun buyurtma ma'lumotlari va sababini ko'rsatib biz bilan bog'laning. Biz qaytarish manzili va keyingi qadamlarni tasdiqlaymiz.",
+      "refundsText": "Mahsulot qaytarilgach va tekshirilgach, pul asl to'lov usuliga qaytariladi.",
+      "exchangesHeading": "ALMASHTIRISH",
+      "exchangesText": "Boshqa o'lcham kerakmi? Biz bilan bog'laning — mavjudligiga qarab almashtirib beramiz."
+    },
+    "faq": {
+      "title": "SAVOL-JAVOB",
+      "items": [
+        { "q": "Buyurtmani qanday berish mumkin?", "a": "Mahsulotlarni savatga qo'shing, o'lchamni tanlang va yetkazib berish ma'lumotlarini kiritib buyurtma bering. Jamoamiz tez orada buyurtmangizni tasdiqlash va to'lovni kelishish uchun bog'lanadi." },
+        { "q": "Yetkazib berish qancha vaqt oladi?", "a": "Mamlakat ichidagi buyurtmalar 3–5 ish kunida, xalqaro buyurtmalar 7–14 ish kunida, 1–3 kunlik qayta ishlashdan so'ng yetib keladi. Yetkazib berish dunyo bo'ylab bepul." },
+        { "q": "Qaytarish siyosatingiz qanday?", "a": "Yetkazib berilgandan 30 kun ichida, kiyilmagan, yuvilmagan va yorliqlari bilan bo'lgan mahsulotlar qaytariladi. To'liq ma'lumot uchun \"Yetkazib berish va qaytarish\" sahifasiga qarang." },
+        { "q": "To'g'ri o'lchamni qanday tanlash mumkin?", "a": "Har bir mahsulot sahifasidagi o'lcham jadvalini ko'ring yoki bo'yingiz va vazningiz asosida tavsiya olish uchun AI stilistdan so'rang." },
+        { "q": "Buyurtmani o'zgartirish yoki bekor qilish mumkinmi?", "a": "Ha — buyurtma berilgandan so'ng imkon qadar tezroq biz bilan bog'laning. Buyurtma jo'natilgandan so'ng o'zgartirish imkonsiz." }
+      ]
+    },
+    "contact": {
+      "title": "BIZ BILAN BOG'LANING",
+      "text": "Buyurtma, o'lcham yoki boshqa savollaringiz bormi? Yozing — jamoamiz albatta javob beradi.",
+      "comingSoon": "Aloqa ma'lumotlari tez orada qo'shiladi."
+    },
+    "sizeGuide": {
+      "title": "O'LCHAM JADVALI",
+      "subtitle": "PUTTA — oversize fit. Quyidagi o'lchamlar taxminiy — erkinroq ko'rinish uchun kattaroq o'lcham tanlang.",
+      "topsHoodies": "USTKI KIYIM VA XUDI",
+      "bottoms": "PASTKI KIYIM",
+      "size": "O'lcham",
+      "chest": "Ko'krak",
+      "length": "Uzunlik",
+      "waist": "Bel",
+      "inseam": "Ichki tikuv",
+      "stillUnsure": "Hali ham aniq emasmi? Bo'yingiz va vazningiz asosida tavsiya olish uchun PUTTA AI stilistidan so'rang."
+    }
+  },
+  "products": {
+    "1": { "description": "Premium zich paxta. Oversize fason. Hashamatli stritver uchun asosiy buyum." },
+    "2": { "description": "Kremrang ohangdosh estetika. Yumshoq va tuzilgan siluet." },
+    "3": { "description": "Sovuq kulrang minimalizm. Tushirilgan yelka. Sof kuch." },
+    "4": { "description": "Xira osmon ko'k rangi. Premium paxta. Yuksaltirilgan kundalik kiyim." },
+    "5": { "description": "Zich paxta xudi. Tuzilgan oversize siluet." },
+    "6": { "description": "Minimalist uzun yengli kiyim. Toza tuzilma. Yuksaltirilgan kundalik kiyim." },
+    "7": { "description": "Minimal tikilgan logotipli tuzilgan kepka." },
+    "8": { "description": "Toza oq minimal futbolka. Premium paxta." },
+    "9": { "description": "Zich oversize xudi. Ko'cha uslubidagi siluet." },
+    "10": { "description": "Minimal ko'cha shimlari. Toza fason." }
+  }
+}

@@ -4,11 +4,13 @@ import { motion } from 'framer-motion';
 import { PRODUCTS } from '../constants';
 import { useCart } from '../context/CartContext';
 import { ArrowLeft } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { t } = useLanguage();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
 
@@ -23,7 +25,7 @@ const ProductDetail: React.FC = () => {
   if (!product) {
     return (
       <div className="min-h-screen bg-neutral-950 flex items-center justify-center text-white">
-        <p>Product not found.</p>
+        <p>{t('productDetail.notFound')}</p>
       </div>
     );
   }
@@ -80,20 +82,20 @@ const ProductDetail: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-neutral-500 tracking-widest text-sm mb-4">{product.category}</p>
+            <p className="text-neutral-500 tracking-widest text-sm mb-4">{t(`categories.${product.category.toLowerCase()}`)}</p>
             <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 uppercase">{product.name}</h1>
             <p className="text-2xl text-neutral-300 mb-8">${product.price}</p>
-            
+
             <p className="text-neutral-400 leading-relaxed mb-12 max-w-md">
-              {product.description}
+              {t(`products.${product.id}.description`)}
               <br /><br />
-              Engineered for durability and comfort. A staple piece for the modern wardrobe.
+              {t('productDetail.engineeredText')}
             </p>
 
             <div className="mb-12">
               <div className="flex justify-between items-center mb-4">
-                <span className="text-sm font-bold text-white tracking-widest">SELECT SIZE</span>
-                <Link to="/size-guide" className="text-xs text-neutral-500 underline hover:text-white transition-colors">Size Guide</Link>
+                <span className="text-sm font-bold text-white tracking-widest">{t('productDetail.selectSize')}</span>
+                <Link to="/size-guide" className="text-xs text-neutral-500 underline hover:text-white transition-colors">{t('productDetail.sizeGuide')}</Link>
               </div>
               <div className="flex flex-wrap gap-4">
                 {product.sizes.map(size => (
@@ -111,7 +113,7 @@ const ProductDetail: React.FC = () => {
                 ))}
               </div>
               {!selectedSize && (
-                <p className="text-red-500 text-xs mt-2 h-4 opacity-0 animate-pulse">Please select a size</p>
+                <p className="text-red-500 text-xs mt-2 h-4 opacity-0 animate-pulse">{t('productDetail.pleaseSelectSize')}</p>
               )}
             </div>
 
@@ -119,21 +121,21 @@ const ProductDetail: React.FC = () => {
               onClick={handleAddToCart}
               disabled={!selectedSize}
               className={`w-full py-5 text-sm font-bold tracking-[0.2em] transition-all duration-300 ${
-                selectedSize 
-                  ? 'bg-white text-black hover:bg-neutral-200' 
+                selectedSize
+                  ? 'bg-white text-black hover:bg-neutral-200'
                   : 'bg-neutral-800 text-neutral-500 cursor-not-allowed'
               }`}
             >
-              {selectedSize ? 'ADD TO CART' : 'SELECT A SIZE'}
+              {selectedSize ? t('productDetail.addToCart') : t('productDetail.selectASize')}
             </button>
 
             <div className="mt-12 border-t border-neutral-900 pt-8 space-y-4">
               <div className="flex items-center space-x-4 text-xs text-neutral-500">
-                <span className="flex items-center"><span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></span>In Stock</span>
+                <span className="flex items-center"><span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></span>{t('productDetail.inStock')}</span>
                 <span>•</span>
-                <span>Free Shipping Worldwide</span>
+                <span>{t('productDetail.freeShipping')}</span>
                 <span>•</span>
-                <span>30 Day Returns</span>
+                <span>{t('productDetail.returns30')}</span>
               </div>
             </div>
           </motion.div>
