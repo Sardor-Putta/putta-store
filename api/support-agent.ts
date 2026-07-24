@@ -139,7 +139,6 @@ export default async function handler(req: any, res: any) {
         // Same fix as api/ai-stylist.ts: disable thinking so the token
         // budget isn't eaten by internal reasoning before the JSON reply.
         thinkingConfig: { thinkingBudget: 0 },
-        responseMimeType: 'application/json',
       },
       history: Array.isArray(history)
         ? history.map((h: { role: 'user' | 'model'; text: string }) => ({
@@ -151,9 +150,14 @@ export default async function handler(req: any, res: any) {
 
     const result = await chat.sendMessage({ message });
 
+    // Without a strict response_mime_type, the model occasionally wraps the
+    // JSON in a markdown code fence despite the prompt saying not to — strip
+    // it before parsing.
+    const rawText = (result.text ?? '{}').trim().replace(/^```(?:json)?\s*|\s*```$/g, '');
+
     let parsed: SupportResponse;
     try {
-      parsed = JSON.parse(result.text ?? '{}');
+      parsed = JSON.parse(rawText);
     } catch (parseError) {
       console.error('Failed to parse support agent JSON:', result.text);
       res.status(200).json({ reply: '' });
