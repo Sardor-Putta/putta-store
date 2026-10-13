@@ -3,6 +3,38 @@
 // environment variable in the Vercel project settings.
 import { GoogleGenAI } from '@google/genai';
 
+// Gemini sometimes answers 503 "high demand" / 429 for a while. Retry briefly,
+// then fall back to a lighter model so the chat keeps working.
+const GEMINI_MODELS = ['gemini-flash-latest', 'gemini-flash-lite-latest'];
+const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
+const isTransient = (e: unknown) =>
+  /\b(503|429)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|overloaded|high demand/i.test(errText(e));
+const isMissingModel = (e: unknown) => /\b404\b|NOT_FOUND/i.test(errText(e));
+
+async function sendWithFallback(
+  ai: GoogleGenAI,
+  config: any,
+  history: any[],
+  message: string,
+) {
+  let lastError: unknown;
+  for (const model of GEMINI_MODELS) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const chat = ai.chats.create({ model, config, history });
+        return await chat.sendMessage({ message });
+      } catch (e) {
+        lastError = e;
+        if (isMissingModel(e)) break; // try the next model
+        if (!isTransient(e)) throw e;
+        await new Promise(r => setTimeout(r, 700 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastError;
+}
+
+
 // Intentionally duplicated from constants.ts instead of imported: a relative
 // import reaching outside api/ is a known source of "works locally, crashes
 // at module load on Vercel" failures for Node serverless functions. Keep this
@@ -77,11 +109,9 @@ export default async function handler(req: any, res: any) {
 
   try {
     const ai = new GoogleGenAI({ apiKey });
-    const chat = ai.chats.create({
-      // Use the rolling "-latest" alias instead of a dated snapshot
-      // (gemini-2.5-flash was sunset for new API keys — see commit history).
-      model: 'gemini-flash-latest',
-      config: {
+    const result = await sendWithFallback(
+      ai,
+      {
         systemInstruction: SYSTEM_INSTRUCTION,
         temperature: 0.7,
         maxOutputTokens: 300,
@@ -90,15 +120,14 @@ export default async function handler(req: any, res: any) {
         // A short styling suggestion doesn't need chain-of-thought.
         thinkingConfig: { thinkingBudget: 0 },
       },
-      history: Array.isArray(history)
+      Array.isArray(history)
         ? history.map((h: { role: 'user' | 'model'; text: string }) => ({
             role: h.role,
             parts: [{ text: h.text }],
           }))
         : [],
-    });
-
-    const result = await chat.sendMessage({ message });
+      message,
+    );
     res.status(200).json({ reply: result.text || "I didn't catch that." });
   } catch (error) {
     console.error('Gemini API error:', error);
