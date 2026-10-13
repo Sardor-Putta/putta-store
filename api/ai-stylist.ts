@@ -6,7 +6,7 @@ import { GoogleGenAI } from '@google/genai';
 // Gemini sometimes answers 503 "high demand" / 429 for a while. Retry briefly,
 // then fall back to a lighter model so the chat keeps working.
 const GEMINI_MODELS = ['gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-flash-lite-latest'];
-const MODEL_TIMEOUT_MS = 15000;
+const MODEL_TIMEOUT_MS = 12000;
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
 const isTransient = (e: unknown) =>
   /\b(503|429)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|overloaded|high demand|TIMEOUT/i.test(errText(e));
@@ -20,6 +20,10 @@ async function sendWithFallback(
   message: string,
 ) {
   let lastError: unknown;
+  // Two rounds through the model list: Gemini "high demand" spikes often
+  // clear within a couple of seconds.
+  for (let round = 0; round < 2; round++) {
+  if (round > 0) await new Promise(r => setTimeout(r, 2000));
   for (const model of GEMINI_MODELS) {
     let cfg = config;
     for (let attempt = 0; attempt < 3; attempt++) {
@@ -45,6 +49,7 @@ async function sendWithFallback(
         break; // overloaded — go straight to the next model instead of waiting
       }
     }
+  }
   }
   throw lastError;
 }
