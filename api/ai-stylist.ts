@@ -5,7 +5,7 @@ import { GoogleGenAI } from '@google/genai';
 
 // Gemini sometimes answers 503 "high demand" / 429 for a while. Retry briefly,
 // then fall back to a lighter model so the chat keeps working.
-const GEMINI_MODELS = ['gemini-flash-latest', 'gemini-flash-lite-latest', 'gemini-2.5-flash-lite'];
+const GEMINI_MODELS = ['gemini-flash-latest', 'gemini-3.5-flash-lite', 'gemini-flash-lite-latest'];
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
 const isTransient = (e: unknown) =>
   /\b(503|429)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|overloaded|high demand/i.test(errText(e));
@@ -36,8 +36,7 @@ async function sendWithFallback(
         }
         if (isInvalidArg(e)) break;
         if (!isTransient(e)) throw e;
-        await new Promise(r => setTimeout(r, 600));
-        if (attempt >= 1) break; // don't burn time, move to the next model
+        break; // overloaded — go straight to the next model instead of waiting
       }
     }
   }
