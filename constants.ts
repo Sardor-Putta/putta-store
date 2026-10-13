@@ -19,7 +19,7 @@ export const PRODUCTS: Product[] = [
     name: 'PUTTA CORE TEE – BONE',
     price: 95,
     category: 'Tops',
-    image: 'https://picsum.photos/seed/putta_bone/600/800',
+    image: '/products/hoodie-noir/hoodie-03-hanger.webp',
     description: 'Cream tone-on-tone aesthetic. Soft structured silhouette.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
     name: 'PUTTA CORE TEE – STEEL GREY',
     price: 95,
     category: 'Tops',
-    image: 'https://picsum.photos/seed/putta_grey/600/800',
+    image: '/campaign/campaign-02-model-hoodie-beach.webp',
     description: 'Cold grey minimalism. Drop shoulder. Clean power.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
@@ -37,7 +37,7 @@ export const PRODUCTS: Product[] = [
     name: 'PUTTA CORE TEE – SKY',
     price: 95,
     category: 'Tops',
-    image: 'https://picsum.photos/seed/putta_blue/600/800',
+    image: '/products/hoodie-noir/hoodie-04-ghost-mannequin.webp',
     description: 'Muted sky blue. Premium cotton. Elevated everyday wear.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL']
   },
@@ -61,7 +61,7 @@ export const PRODUCTS: Product[] = [
   name: 'PUTTA LONG SLEEVE – BONE',
   price: 79,
   category: 'Tops',
-  image: 'https://picsum.photos/seed/putta_longsleeve/600/800',
+  image: '/campaign/campaign-03-model-full-outfit-beach.webp',
   description: 'Minimal long sleeve. Clean structure. Elevated daily wear.',
   sizes: ['S', 'M', 'L', 'XL']
 },
@@ -70,7 +70,7 @@ export const PRODUCTS: Product[] = [
   name: 'PUTTA SIGNATURE CAP – BLACK',
   price: 49,
   category: 'Accessories',
-  image: 'https://picsum.photos/seed/putta_cap/600/800',
+  image: '/products/hoodie-noir/hoodie-02-back.webp',
   description: 'Structured cap with minimal embroidered branding.',
   sizes: ['One Size']
 },
@@ -79,7 +79,7 @@ export const PRODUCTS: Product[] = [
   name: 'PUTTA CORE TEE – WHITE',
   price: 95,
   category: 'Tops',
-  image: 'https://picsum.photos/seed/putta_white/600/800',
+  image: '/campaign/campaign-01-model-tshirt-beach.webp',
   description: 'Clean white minimal tee. Premium cotton.',
   sizes: ['S', 'M', 'L', 'XL']
 },
@@ -88,7 +88,13 @@ export const PRODUCTS: Product[] = [
   name: 'PUTTA OVERSIZED HOODIE – GREY',
   price: 139,
   category: 'Hoodies',
-  image: 'https://picsum.photos/seed/putta_hoodie_grey/600/800',
+  image: '/products/hoodie-noir/hoodie-01-front.webp',
+  images: [
+    '/products/hoodie-noir/hoodie-01-front.webp',
+    '/campaign/campaign-02-model-hoodie-beach.webp',
+    '/products/hoodie-noir/hoodie-02-back.webp',
+    '/products/hoodie-noir/hoodie-04-ghost-mannequin.webp',
+  ],
   description: 'Heavy oversized hoodie. Street silhouette.',
   sizes: ['S', 'M', 'L', 'XL']
 },
