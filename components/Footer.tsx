@@ -1,6 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { Phone, Send, Mail } from 'lucide-react';
+
+const CONTACTS = [
+  { icon: Phone, label: '+998 99 905 10 98', href: 'tel:+998999051098' },
+  { icon: Send, label: '@Sardor_998', href: 'https://t.me/Sardor_998' },
+  { icon: Mail, label: 'sardor0898@gmail.com', href: 'mailto:sardor0898@gmail.com' },
+];
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -13,6 +20,21 @@ const Footer: React.FC = () => {
           <p className="text-neutral-500 text-sm max-w-xs leading-relaxed">
             {t('footer.tagline')}
           </p>
+          <ul className="mt-8 space-y-3 text-sm text-neutral-400">
+            {CONTACTS.map(({ icon: Icon, label, href }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-flex items-center gap-3 hover:text-white transition-colors"
+                >
+                  <Icon size={16} strokeWidth={1.5} />
+                  <span>{label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>
