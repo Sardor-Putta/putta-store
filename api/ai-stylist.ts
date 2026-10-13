@@ -5,11 +5,12 @@ import { GoogleGenAI } from '@google/genai';
 
 // Gemini sometimes answers 503 "high demand" / 429 for a while. Retry briefly,
 // then fall back to a lighter model so the chat keeps working.
-const GEMINI_MODELS = ['gemini-flash-latest', 'gemini-flash-lite-latest'];
+const GEMINI_MODELS = ['gemini-flash-latest', 'gemini-flash-lite-latest', 'gemini-2.5-flash-lite'];
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
 const isTransient = (e: unknown) =>
   /\b(503|429)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|overloaded|high demand/i.test(errText(e));
 const isMissingModel = (e: unknown) => /\b404\b|NOT_FOUND/i.test(errText(e));
+const isInvalidArg = (e: unknown) => /\b400\b|INVALID_ARGUMENT/i.test(errText(e));
 
 async function sendWithFallback(
   ai: GoogleGenAI,
@@ -19,15 +20,24 @@ async function sendWithFallback(
 ) {
   let lastError: unknown;
   for (const model of GEMINI_MODELS) {
-    for (let attempt = 0; attempt < 2; attempt++) {
+    let cfg = config;
+    for (let attempt = 0; attempt < 3; attempt++) {
       try {
-        const chat = ai.chats.create({ model, config, history });
+        const chat = ai.chats.create({ model, config: cfg, history });
         return await chat.sendMessage({ message });
       } catch (e) {
         lastError = e;
         if (isMissingModel(e)) break; // try the next model
+        // Some models reject thinkingBudget: 0 — retry once without it.
+        if (isInvalidArg(e) && cfg.thinkingConfig) {
+          const { thinkingConfig, ...rest } = cfg;
+          cfg = rest;
+          continue;
+        }
+        if (isInvalidArg(e)) break;
         if (!isTransient(e)) throw e;
-        await new Promise(r => setTimeout(r, 700 * (attempt + 1)));
+        await new Promise(r => setTimeout(r, 600));
+        if (attempt >= 1) break; // don't burn time, move to the next model
       }
     }
   }
