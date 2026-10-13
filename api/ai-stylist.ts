@@ -18,6 +18,9 @@ const CATALOG_ITEMS = [
   { name: 'PUTTA CORE TEE – WHITE', category: 'Tops', price: 95 },
   { name: 'PUTTA OVERSIZED HOODIE – GREY', category: 'Hoodies', price: 139 },
   { name: 'PUTTA ESSENTIAL PANTS – BLACK', category: 'Bottoms', price: 119 },
+  { name: 'PUTTA WIDE LEG PANTS – NOIR', category: 'Bottoms', price: 129 },
+  { name: 'PUTTA SWEATPANTS – BLACK', category: 'Bottoms', price: 109 },
+  { name: 'PUTTA LOUNGE PANTS – BLACK', category: 'Bottoms', price: 99 },
 ];
 
 function extractColor(name: string): string {

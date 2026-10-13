@@ -112,5 +112,48 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Minimal street pants. Clean fit.',
   sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '11',
+  name: 'PUTTA WIDE LEG PANTS – NOIR',
+  price: 129,
+  category: 'Bottoms',
+  image: '/campaign/campaign-03-model-full-outfit-beach.webp',
+  images: [
+    '/campaign/campaign-03-model-full-outfit-beach.webp',
+    '/products/pants-black/pants-04-flat-side.webp',
+    '/products/pants-black/pants-03-label-closeup.webp',
+    '/products/pants-black/pants-02-waistband-detail-b.webp',
+  ],
+  description: 'Relaxed wide leg. Heavy fleece. Full street silhouette.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '12',
+  name: 'PUTTA SWEATPANTS – BLACK',
+  price: 109,
+  category: 'Bottoms',
+  image: '/products/pants-black/pants-03-label-closeup.webp',
+  images: [
+    '/products/pants-black/pants-03-label-closeup.webp',
+    '/products/pants-black/pants-04-flat-side.webp',
+    '/products/pants-black/pants-01-waistband-detail-a.webp',
+  ],
+  description: 'Soft brushed cotton. Elastic waist with drawcord. Everyday comfort.',
+  sizes: ['S', 'M', 'L', 'XL']
+},
+{
+  id: '13',
+  name: 'PUTTA LOUNGE PANTS – BLACK',
+  price: 99,
+  category: 'Bottoms',
+  image: '/products/pants-black/pants-01-waistband-detail-a.webp',
+  images: [
+    '/products/pants-black/pants-01-waistband-detail-a.webp',
+    '/products/pants-black/pants-02-waistband-detail-b.webp',
+    '/products/pants-black/pants-04-flat-side.webp',
+  ],
+  description: 'Lightweight lounge fit. Clean lines. Made to move.',
+  sizes: ['S', 'M', 'L', 'XL']
 }
 ];
