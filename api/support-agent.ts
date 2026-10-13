@@ -6,10 +6,11 @@ import { GoogleGenAI } from '@google/genai';
 
 // Gemini sometimes answers 503 "high demand" / 429 for a while. Retry briefly,
 // then fall back to a lighter model so the chat keeps working.
-const GEMINI_MODELS = ['gemini-flash-latest', 'gemini-3.5-flash-lite', 'gemini-flash-lite-latest'];
+const GEMINI_MODELS = ['gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-flash-lite-latest'];
+const MODEL_TIMEOUT_MS = 15000;
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
 const isTransient = (e: unknown) =>
-  /\b(503|429)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|overloaded|high demand/i.test(errText(e));
+  /\b(503|429)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|overloaded|high demand|TIMEOUT/i.test(errText(e));
 const isMissingModel = (e: unknown) => /\b404\b|NOT_FOUND/i.test(errText(e));
 const isInvalidArg = (e: unknown) => /\b400\b|INVALID_ARGUMENT/i.test(errText(e));
 
@@ -25,7 +26,12 @@ async function sendWithFallback(
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
         const chat = ai.chats.create({ model, config: cfg, history });
-        return await chat.sendMessage({ message });
+        return await Promise.race([
+          chat.sendMessage({ message }),
+          new Promise<never>((_, reject) =>
+            setTimeout(() => reject(new Error(`TIMEOUT ${model}`)), MODEL_TIMEOUT_MS),
+          ),
+        ]);
       } catch (e) {
         lastError = e;
         if (isMissingModel(e)) break; // try the next model
