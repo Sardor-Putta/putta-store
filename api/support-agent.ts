@@ -11,6 +11,8 @@ const MODEL_TIMEOUT_MS = 12000;
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
 const isTransient = (e: unknown) =>
   /\b(503|429)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|overloaded|high demand|TIMEOUT/i.test(errText(e));
+// Daily/plan quota is used up: retrying only wastes more requests.
+const isQuotaExhausted = (e: unknown) => /exceeded your current quota/i.test(errText(e));
 const isMissingModel = (e: unknown) => /\b404\b|NOT_FOUND/i.test(errText(e));
 const isInvalidArg = (e: unknown) => /\b400\b|INVALID_ARGUMENT/i.test(errText(e));
 
@@ -38,6 +40,7 @@ async function sendWithFallback(
         ]);
       } catch (e) {
         lastError = e;
+        if (isQuotaExhausted(e)) throw e;
         if (isMissingModel(e)) break; // try the next model
         // Some models reject thinkingBudget: 0 — retry once without it.
         if (isInvalidArg(e) && cfg.thinkingConfig) {
