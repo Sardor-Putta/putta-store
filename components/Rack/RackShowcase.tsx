@@ -169,7 +169,12 @@ const RackShowcase: React.FC = () => {
                     className="relative snap-center"
                     style={{ zIndex: facing ? 50 : 10 + i }}
                   >
-                    <div>
+                    {/* idle sway */}
+                    <motion.div
+                      style={{ transformOrigin: '50% 0%' }}
+                      animate={{ rotate: [-0.8, 0.8, -0.8] }}
+                      transition={{ duration: 4 + i * 0.35, repeat: Infinity, ease: 'easeInOut' }}
+                    >
                       <motion.button
                         type="button"
                         onClick={() => open(i)}
@@ -238,7 +243,7 @@ const RackShowcase: React.FC = () => {
                           )}
                         </motion.div>
                       </motion.button>
-                    </div>
+                    </motion.div>
                   </motion.div>
                 );
               })}
