@@ -20,8 +20,8 @@ type Pt = { x: number; y: number; v: number };
 
 /** How each cut-out sits on the body. Measured from the images' alpha masks. */
 const TOP_FIT: Record<string, { widthPerShoulder: number; shoulderAt: number }> = {
-  Tops: { widthPerShoulder: 2.1, shoulderAt: 0.12 },
-  Hoodies: { widthPerShoulder: 2.15, shoulderAt: 0.32 },
+  Tops: { widthPerShoulder: 2.45, shoulderAt: 0.12 },
+  Hoodies: { widthPerShoulder: 2.45, shoulderAt: 0.3 },
 };
 const BOTTOM_FIT = { widthPerHip: 2.3, waistAbove: 0.08, legStretch: 1.12 };
 
@@ -63,6 +63,28 @@ const getImage = (src: string) => {
   }
   return img;
 };
+
+const Thumb: React.FC<{ p: TryOnProduct | null; active: boolean; noneLabel: string; onClick: () => void }> = ({
+  p,
+  active,
+  noneLabel,
+  onClick,
+}) => (
+  <button
+    type="button"
+    onClick={onClick}
+    title={p?.name ?? noneLabel}
+    className={`shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg bg-[#ecebe7] flex items-center justify-center p-1.5 border-2 transition-colors ${
+      active ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
+    }`}
+  >
+    {p ? (
+      <img src={p.tryon} alt={p.name} loading="lazy" className="max-w-full max-h-full object-contain" />
+    ) : (
+      <span className="text-[10px] tracking-widest text-neutral-500 uppercase">{noneLabel}</span>
+    )}
+  </button>
+);
 
 const TryOnCamera: React.FC = () => {
   const { t } = useLanguage();
@@ -244,23 +266,6 @@ const TryOnCamera: React.FC = () => {
 
   if (tops.length === 0 && bottoms.length === 0) return null;
 
-  const Thumb: React.FC<{ p: TryOnProduct | null; active: boolean; onClick: () => void }> = ({ p, active, onClick }) => (
-    <button
-      type="button"
-      onClick={onClick}
-      title={p?.name ?? t('home.tryon.none')}
-      className={`shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg bg-[#ecebe7] flex items-center justify-center p-1.5 border-2 transition-colors ${
-        active ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
-      }`}
-    >
-      {p ? (
-        <img src={p.tryon} alt={p.name} loading="lazy" className="max-w-full max-h-full object-contain" />
-      ) : (
-        <span className="text-[10px] tracking-widest text-neutral-500 uppercase">{t('home.tryon.none')}</span>
-      )}
-    </button>
-  );
-
   return (
     <section className="py-20 md:py-24 px-6 bg-neutral-950 border-t border-neutral-900">
       <div className="max-w-5xl mx-auto">
@@ -337,9 +342,9 @@ const TryOnCamera: React.FC = () => {
             <div>
               <p className="text-neutral-500 text-[10px] tracking-[0.25em] uppercase mb-2">{t('home.tryon.tops')}</p>
               <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
-                <Thumb p={null} active={topId === null} onClick={() => setTopId(null)} />
+                <Thumb noneLabel={t('home.tryon.none')} p={null} active={topId === null} onClick={() => setTopId(null)} />
                 {tops.map(p => (
-                  <Thumb key={p.id} p={p} active={topId === p.id} onClick={() => setTopId(p.id)} />
+                  <Thumb noneLabel={t('home.tryon.none')} key={p.id} p={p} active={topId === p.id} onClick={() => setTopId(p.id)} />
                 ))}
               </div>
             </div>
@@ -348,9 +353,9 @@ const TryOnCamera: React.FC = () => {
             <div>
               <p className="text-neutral-500 text-[10px] tracking-[0.25em] uppercase mb-2">{t('home.tryon.bottoms')}</p>
               <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
-                <Thumb p={null} active={bottomId === null} onClick={() => setBottomId(null)} />
+                <Thumb noneLabel={t('home.tryon.none')} p={null} active={bottomId === null} onClick={() => setBottomId(null)} />
                 {bottoms.map(p => (
-                  <Thumb key={p.id} p={p} active={bottomId === p.id} onClick={() => setBottomId(p.id)} />
+                  <Thumb noneLabel={t('home.tryon.none')} key={p.id} p={p} active={bottomId === p.id} onClick={() => setBottomId(p.id)} />
                 ))}
               </div>
             </div>
