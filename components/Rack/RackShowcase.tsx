@@ -11,8 +11,8 @@ type RackProduct = Product & { rack: NonNullable<Product['rack']> };
 
 /** Garment height on the rack (desktop px). Mobile scales it down via CSS. */
 const HEIGHT_BY_CATEGORY: Record<string, number> = {
-  Tops: 220,
-  Hoodies: 250,
+  Tops: 250,
+  Hoodies: 275,
   Bottoms: 330,
   Accessories: 140,
 };
