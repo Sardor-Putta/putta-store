@@ -101,7 +101,6 @@ const RackShowcase: React.FC = () => {
   if (items.length === 0) return null;
 
   const current = selected !== null ? items[selected] : null;
-  const currentImage = current ? (side === 'back' && current.rack.back) || current.rack.front : '';
 
   const onSwipe = (_: unknown, info: PanInfo) => {
     if (info.offset.x < -60) step(1);
@@ -255,21 +254,40 @@ const RackShowcase: React.FC = () => {
               )}
 
               <motion.div
-                className="h-[260px] md:h-[340px] flex items-end justify-center cursor-grab active:cursor-grabbing"
+                className="h-[260px] md:h-[340px] flex items-end justify-center cursor-grab active:cursor-grabbing [perspective:1600px]"
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.25}
                 onDragEnd={onSwipe}
               >
-                <motion.img
+                {/* flip card: front face carries the shared layout animation, back face sits behind it */}
+                <motion.div
                   key={current.id}
-                  layoutId={`rack-img-${current.id}`}
-                  src={currentImage}
-                  alt={current.name}
-                  draggable={false}
-                  transition={SPRING}
-                  className="h-full w-auto max-w-[80vw] object-contain select-none drop-shadow-[0_24px_24px_rgba(0,0,0,0.3)]"
-                />
+                  className="relative h-full [transform-style:preserve-3d]"
+                  initial={false}
+                  animate={{ rotateY: side === 'back' ? 180 : 0 }}
+                  transition={{ duration: 0.7, ease: [0.45, 0, 0.2, 1] }}
+                >
+                  <motion.img
+                    layoutId={`rack-img-${current.id}`}
+                    src={current.rack.front}
+                    alt={current.name}
+                    draggable={false}
+                    transition={SPRING}
+                    className="h-full w-auto max-w-[80vw] object-contain select-none [backface-visibility:hidden] drop-shadow-[0_24px_24px_rgba(0,0,0,0.3)]"
+                  />
+                  {current.rack.back && (
+                    <div className="absolute inset-0 flex justify-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                      <img
+                        src={current.rack.back}
+                        alt=""
+                        aria-hidden
+                        draggable={false}
+                        className="h-full w-auto max-w-[80vw] object-contain select-none drop-shadow-[0_24px_24px_rgba(0,0,0,0.3)]"
+                      />
+                    </div>
+                  )}
+                </motion.div>
               </motion.div>
 
               <motion.div
