@@ -19,6 +19,9 @@ const HEIGHT_BY_CATEGORY: Record<string, number> = {
 
 const SPRING = { type: 'spring', stiffness: 260, damping: 26 } as const;
 
+/** How far a resting garment is turned away (deg): enough to save space, little enough to keep its volume. */
+const SIDE_ANGLE = 52;
+
 /** Order on the rail — mixes colours and types so neighbours contrast. Unlisted rack products go last. */
 const RACK_ORDER = ['1', '2', '5', '3', '10', '4', '9', '8', '11'];
 
@@ -36,14 +39,35 @@ const useIsDesktop = () => {
   return match;
 };
 
+const METAL = 'url(#rack-metal)';
+
+/** Chrome-like hook that sits on the rail. */
 const Hook: React.FC = () => (
-  <svg width="22" height="32" viewBox="0 0 22 32" fill="none" aria-hidden className="block mx-auto">
+  <svg width="24" height="34" viewBox="0 0 24 34" fill="none" aria-hidden className="block mx-auto">
+    <defs>
+      <linearGradient id="rack-metal" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#d9d9d9" />
+        <stop offset="0.45" stopColor="#8a8a8a" />
+        <stop offset="1" stopColor="#5e5e5e" />
+      </linearGradient>
+    </defs>
     <path
-      d="M11 32 V19 C11 15 4 14 4 8.5 C4 4 7.4 1.5 11 1.5 C14.6 1.5 18 4 18 7.5"
-      stroke="#7d7d7d"
-      strokeWidth="2"
+      d="M12 34 V20 C12 16 4.5 15 4.5 9 C4.5 4.2 8 1.6 12 1.6 C16 1.6 19.5 4.2 19.5 8"
+      stroke={METAL}
+      strokeWidth="2.2"
       strokeLinecap="round"
     />
+  </svg>
+);
+
+/** Metal trouser hanger bar with two clips, drawn across the waistband. */
+const ClipBar: React.FC = () => (
+  <svg viewBox="0 0 100 16" preserveAspectRatio="none" aria-hidden className="absolute -top-[7px] left-[-6%] w-[112%] h-4 z-10">
+    <rect x="1" y="1" width="98" height="3.2" rx="1.6" fill={METAL} />
+    <rect x="14" y="2" width="9" height="12" rx="1.5" fill="#4a4a4a" />
+    <rect x="77" y="2" width="9" height="12" rx="1.5" fill="#4a4a4a" />
+    <rect x="15.5" y="3" width="2" height="9" fill="#9a9a9a" />
+    <rect x="78.5" y="3" width="2" height="9" fill="#9a9a9a" />
   </svg>
 );
 
@@ -51,7 +75,7 @@ const RackShowcase: React.FC = () => {
   const { t } = useLanguage();
   const { addToCart } = useCart();
   const isDesktop = useIsDesktop();
-  const sideWidth = isDesktop ? 46 : 30;
+  const sideWidth = isDesktop ? 84 : 52;
 
   const items = useMemo(
     () => {
@@ -166,34 +190,56 @@ const RackShowcase: React.FC = () => {
                         aria-label={p.name}
                       >
                         <Hook />
-                        {/* width animates between a thin side slice and the full garment */}
+                        {/* width animates between the side-on slot and the full garment */}
                         <motion.div
                           initial={false}
                           animate={{ width: facing ? 'auto' : sideWidth }}
                           transition={SPRING}
-                          className="-mt-1.5 flex justify-center [perspective:1400px] [--s:0.72] md:[--s:1]"
+                          className="-mt-1.5 flex justify-center [perspective:900px] [--s:0.72] md:[--s:1]"
                           style={{ height: `calc(${h}px * var(--s))` }}
                         >
                           {isSelected ? (
                             // invisible twin keeps the slot on the rack while the piece is in focus
                             <img src={p.rack.front} alt="" aria-hidden className="h-full w-auto max-w-none shrink-0 invisible" />
                           ) : (
-                            <motion.img
-                              layoutId={`rack-img-${p.id}`}
-                              src={p.rack.front}
-                              alt={p.name}
-                              loading="lazy"
-                              draggable={false}
+                            <motion.div
+                              className="relative h-full shrink-0"
                               initial={false}
                               animate={{
-                                rotateY: facing ? 0 : 72,
+                                rotateY: facing ? 0 : SIDE_ANGLE,
                                 filter: facing
-                                  ? 'brightness(1) drop-shadow(0px 16px 14px rgba(0,0,0,0.3))'
-                                  : 'brightness(0.82) drop-shadow(0px 8px 8px rgba(0,0,0,0.22))',
+                                  ? 'drop-shadow(0px 18px 16px rgba(0,0,0,0.30))'
+                                  : 'drop-shadow(-10px 10px 10px rgba(0,0,0,0.25))',
                               }}
                               transition={SPRING}
-                              className="h-full w-auto max-w-none shrink-0 select-none"
-                            />
+                            >
+                              {p.category === 'Bottoms' && <ClipBar />}
+                              <motion.img
+                                layoutId={`rack-img-${p.id}`}
+                                src={p.rack.front}
+                                alt={p.name}
+                                loading="lazy"
+                                draggable={false}
+                                transition={SPRING}
+                                className="h-full w-auto max-w-none select-none"
+                              />
+                              {/* light falls from the front-left: the far half of a turned garment goes darker, giving it volume */}
+                              <motion.div
+                                aria-hidden
+                                className="absolute inset-0 pointer-events-none"
+                                initial={false}
+                                animate={{ opacity: facing ? 0 : 1 }}
+                                transition={{ duration: 0.3 }}
+                                style={{
+                                  background:
+                                    'linear-gradient(90deg, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.22) 70%, rgba(0,0,0,0.5) 100%)',
+                                  WebkitMaskImage: `url(${p.rack.front})`,
+                                  maskImage: `url(${p.rack.front})`,
+                                  WebkitMaskSize: '100% 100%',
+                                  maskSize: '100% 100%',
+                                }}
+                              />
+                            </motion.div>
                           )}
                         </motion.div>
                       </motion.button>
