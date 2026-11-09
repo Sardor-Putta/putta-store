@@ -22,20 +22,6 @@ const SPRING = { type: 'spring', stiffness: 260, damping: 26 } as const;
 /** How far a resting garment is turned away (deg): enough to save space, little enough to keep its volume. */
 const SIDE_ANGLE = 52;
 
-/** Body thickness (px) per category; stacked darker copies behind the garment form its side panel when turned. */
-const DEPTH_BY_CATEGORY: Record<string, number> = { Tops: 24, Hoodies: 34, Bottoms: 22, Accessories: 10 };
-const depthSteps = (category: string) => {
-  const depth = DEPTH_BY_CATEGORY[category] ?? 24;
-  return Array.from({ length: 8 }, (_, k) => ({ d: Math.round((depth * (k + 1)) / 8), depth }));
-};
-
-const maskOf = (src: string): React.CSSProperties => ({
-  WebkitMaskImage: `url(${src})`,
-  maskImage: `url(${src})`,
-  WebkitMaskSize: '100% 100%',
-  maskSize: '100% 100%',
-});
-
 /** Order on the rail — mixes colours and types so neighbours contrast. Unlisted rack products go last. */
 const RACK_ORDER = ['1', '2', '5', '3', '10', '4', '9', '8', '11'];
 
@@ -217,29 +203,16 @@ const RackShowcase: React.FC = () => {
                             <img src={p.rack.front} alt="" aria-hidden className="h-full w-auto max-w-none shrink-0 invisible" />
                           ) : (
                             <motion.div
-                              className="relative h-full shrink-0 [transform-style:preserve-3d]"
+                              className="relative h-full shrink-0"
                               initial={false}
-                              animate={{ rotateY: facing ? 0 : SIDE_ANGLE }}
+                              animate={{
+                                rotateY: facing ? 0 : SIDE_ANGLE,
+                                filter: facing
+                                  ? 'drop-shadow(0px 18px 16px rgba(0,0,0,0.30))'
+                                  : 'drop-shadow(-10px 10px 10px rgba(0,0,0,0.25))',
+                              }}
                               transition={SPRING}
                             >
-                              {/* body depth: darker copies stacked behind the garment, so a turned piece has thickness instead of reading as a flat picture */}
-                              {depthSteps(p.category).map(({ d, depth }) => (
-                                <motion.img
-                                  key={d}
-                                  src={p.rack.front}
-                                  alt=""
-                                  aria-hidden
-                                  draggable={false}
-                                  initial={false}
-                                  animate={{ opacity: facing ? 0 : 1 }}
-                                  transition={{ duration: 0.25 }}
-                                  className="absolute inset-0 h-full w-auto max-w-none select-none pointer-events-none"
-                                  style={{
-                                    transform: `translate3d(-${(d * 0.45).toFixed(1)}px, 0, -${d}px)`,
-                                    filter: `brightness(${(0.62 - (0.35 * d) / depth).toFixed(2)})`,
-                                  }}
-                                />
-                              ))}
                               {p.category === 'Bottoms' && <ClipBar />}
                               <motion.img
                                 layoutId={`rack-img-${p.id}`}
@@ -248,30 +221,22 @@ const RackShowcase: React.FC = () => {
                                 loading="lazy"
                                 draggable={false}
                                 transition={SPRING}
-                                className="relative h-full w-auto max-w-none select-none drop-shadow-[0_16px_14px_rgba(0,0,0,0.28)]"
+                                className="h-full w-auto max-w-none select-none"
                               />
-                              {/* rounded-body shading: highlight in the middle, falloff to the sides */}
-                              <div
-                                aria-hidden
-                                className="absolute inset-0 pointer-events-none [transform:translateZ(0.5px)]"
-                                style={{
-                                  background:
-                                    'radial-gradient(ellipse 55% 80% at 45% 40%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.18) 75%, rgba(0,0,0,0.5) 100%)',
-                                  mixBlendMode: 'soft-light',
-                                  ...maskOf(p.rack.front),
-                                }}
-                              />
-                              {/* side-on: the far half falls into shadow */}
+                              {/* light falls from the front-left: the far half of a turned garment goes darker, giving it volume */}
                               <motion.div
                                 aria-hidden
-                                className="absolute inset-0 pointer-events-none [transform:translateZ(1px)]"
+                                className="absolute inset-0 pointer-events-none"
                                 initial={false}
                                 animate={{ opacity: facing ? 0 : 1 }}
                                 transition={{ duration: 0.3 }}
                                 style={{
                                   background:
                                     'linear-gradient(90deg, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.22) 70%, rgba(0,0,0,0.5) 100%)',
-                                  ...maskOf(p.rack.front),
+                                  WebkitMaskImage: `url(${p.rack.front})`,
+                                  maskImage: `url(${p.rack.front})`,
+                                  WebkitMaskSize: '100% 100%',
+                                  maskSize: '100% 100%',
                                 }}
                               />
                             </motion.div>
