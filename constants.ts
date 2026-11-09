@@ -22,7 +22,8 @@ export const PRODUCTS: Product[] = [
     category: 'Tops',
     image: '/products/hoodie-noir/hoodie-03-hanger.webp',
     description: 'Cream tone-on-tone aesthetic. Soft structured silhouette.',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    rack: { front: '/products/rack/tee-bone-front.webp' }
   },
   {
     id: '3',
@@ -31,7 +32,8 @@ export const PRODUCTS: Product[] = [
     category: 'Tops',
     image: '/campaign/campaign-02-model-hoodie-beach.webp',
     description: 'Cold grey minimalism. Drop shoulder. Clean power.',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    rack: { front: '/products/rack/tee-steel-front.webp' }
   },
   {
     id: '4',
@@ -40,7 +42,8 @@ export const PRODUCTS: Product[] = [
     category: 'Tops',
     image: '/products/hoodie-noir/hoodie-04-ghost-mannequin.webp',
     description: 'Muted sky blue. Premium cotton. Elevated everyday wear.',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL']
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    rack: { front: '/products/rack/tee-sky-front.webp' }
   },
 {
   id: '5',
@@ -83,7 +86,8 @@ export const PRODUCTS: Product[] = [
   category: 'Tops',
   image: '/campaign/campaign-01-model-tshirt-beach.webp',
   description: 'Clean white minimal tee. Premium cotton.',
-  sizes: ['S', 'M', 'L', 'XL']
+  sizes: ['S', 'M', 'L', 'XL'],
+    rack: { front: '/products/rack/tee-white-front.webp' }
 },
 {
   id: '9',
@@ -99,7 +103,7 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Heavy oversized hoodie. Street silhouette.',
   sizes: ['S', 'M', 'L', 'XL'],
-  rack: { front: '/products/rack/hoodie-oversized-front.webp', back: '/products/rack/hoodie-noir-back.webp' }
+  rack: { front: '/products/rack/hoodie-grey-front.webp', back: '/products/rack/hoodie-grey-back.webp' }
 },
 {
   id: '10',
@@ -130,7 +134,8 @@ export const PRODUCTS: Product[] = [
     '/products/pants-black/pants-02-waistband-detail-b.webp',
   ],
   description: 'Relaxed wide leg. Heavy fleece. Full street silhouette.',
-  sizes: ['S', 'M', 'L', 'XL']
+  sizes: ['S', 'M', 'L', 'XL'],
+    rack: { front: '/products/rack/pants-wide-front.webp' }
 },
 {
   id: '12',

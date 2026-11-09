@@ -19,6 +19,23 @@ const HEIGHT_BY_CATEGORY: Record<string, number> = {
 
 const SPRING = { type: 'spring', stiffness: 260, damping: 26 } as const;
 
+/** Order on the rail — mixes colours and types so neighbours contrast. Unlisted rack products go last. */
+const RACK_ORDER = ['1', '2', '5', '3', '10', '4', '9', '8', '11'];
+
+const useIsDesktop = () => {
+  const query = '(min-width: 768px)';
+  const [match, setMatch] = useState(() =>
+    typeof window === 'undefined' ? true : window.matchMedia(query).matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const onChange = () => setMatch(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return match;
+};
+
 const Hook: React.FC = () => (
   <svg width="22" height="32" viewBox="0 0 22 32" fill="none" aria-hidden className="block mx-auto">
     <path
@@ -33,9 +50,19 @@ const Hook: React.FC = () => (
 const RackShowcase: React.FC = () => {
   const { t } = useLanguage();
   const { addToCart } = useCart();
+  const isDesktop = useIsDesktop();
+  const sideWidth = isDesktop ? 46 : 30;
 
   const items = useMemo(
-    () => PRODUCTS.filter((p): p is RackProduct => Boolean(p.rack)),
+    () => {
+      const rank = (id: string) => {
+        const r = RACK_ORDER.indexOf(id);
+        return r === -1 ? RACK_ORDER.length : r;
+      };
+      return PRODUCTS.filter((p): p is RackProduct => Boolean(p.rack)).sort(
+        (a, b) => rank(a.id) - rank(b.id)
+      );
+    },
     []
   );
 
@@ -111,16 +138,13 @@ const RackShowcase: React.FC = () => {
             <div className="relative flex items-start">
               {items.map((p, i) => {
                 const h = HEIGHT_BY_CATEGORY[p.category] ?? 240;
-                const shift =
-                  hovered === null || hovered === i ? 0 : i < hovered ? -16 : 16;
                 const isSelected = selected === i;
+                const facing = hovered === i;
                 return (
                   <motion.div
                     key={p.id}
-                    className="relative snap-center -mx-3 md:-mx-5 first:ml-0 last:mr-0"
-                    style={{ zIndex: hovered === i ? 20 : 10 - Math.round(Math.abs(i - (items.length - 1) / 2)) }}
-                    animate={{ x: shift }}
-                    transition={SPRING}
+                    className="relative snap-center"
+                    style={{ zIndex: facing ? 50 : 10 + i }}
                   >
                     {/* idle sway */}
                     <motion.div
@@ -136,33 +160,43 @@ const RackShowcase: React.FC = () => {
                         onFocus={() => setHovered(i)}
                         onBlur={() => setHovered(null)}
                         style={{ transformOrigin: '50% 0%' }}
-                        whileHover={{ y: -10, scale: 1.12 }}
+                        animate={{ y: facing ? -8 : 0 }}
                         whileTap={{ scale: 0.98 }}
                         transition={SPRING}
-                        className="block cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-neutral-900/40 rounded"
+                        className="block cursor-pointer focus:outline-none"
                         aria-label={p.name}
                       >
                         <Hook />
-                        <div
-                          className="-mt-1.5 flex justify-center [--s:0.72] md:[--s:1]"
+                        {/* width animates between a thin side slice and the full garment */}
+                        <motion.div
+                          initial={false}
+                          animate={{ width: facing ? 'auto' : sideWidth }}
+                          transition={SPRING}
+                          className="-mt-1.5 flex justify-center [perspective:1400px] [--s:0.72] md:[--s:1]"
                           style={{ height: `calc(${h}px * var(--s))` }}
                         >
-                          {!isSelected && (
+                          {isSelected ? (
+                            // invisible twin keeps the slot on the rack while the piece is in focus
+                            <img src={p.rack.front} alt="" aria-hidden className="h-full w-auto max-w-none shrink-0 invisible" />
+                          ) : (
                             <motion.img
                               layoutId={`rack-img-${p.id}`}
                               src={p.rack.front}
                               alt={p.name}
                               loading="lazy"
                               draggable={false}
-                              className="h-full w-auto max-w-none select-none drop-shadow-[0_14px_14px_rgba(0,0,0,0.28)]"
+                              initial={false}
+                              animate={{
+                                rotateY: facing ? 0 : 72,
+                                filter: facing
+                                  ? 'brightness(1) drop-shadow(0px 16px 14px rgba(0,0,0,0.3))'
+                                  : 'brightness(0.82) drop-shadow(0px 8px 8px rgba(0,0,0,0.22))',
+                              }}
                               transition={SPRING}
+                              className="h-full w-auto max-w-none shrink-0 select-none"
                             />
                           )}
-                          {isSelected && (
-                            // invisible twin keeps the gap on the rack while the piece is in focus
-                            <img src={p.rack.front} alt="" aria-hidden className="h-full w-auto max-w-none invisible" />
-                          )}
-                        </div>
+                        </motion.div>
                       </motion.button>
                     </motion.div>
                   </motion.div>
