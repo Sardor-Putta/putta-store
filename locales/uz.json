@@ -62,22 +62,6 @@
       "prev": "Oldingi",
       "next": "Keyingi",
       "hint": "Ochish uchun buyumni bosing"
-    },
-    "tryon": {
-      "title": "KIYIB KO‘RING",
-      "subtitle": "Kamera orqali, jonli",
-      "start": "KAMERANI YOQISH",
-      "stop": "Kamerani o‘chirish",
-      "loading": "Kamera yuklanmoqda…",
-      "snapshot": "Rasmni saqlash",
-      "tops": "Ust kiyim",
-      "bottoms": "Shim",
-      "none": "Yo‘q",
-      "hint": "Kameradan 1,5–2 m uzoqda turing: yelkalaringiz (shim uchun oyoqlaringiz ham) kadrga sig‘sin.",
-      "privacy": "Video faqat qurilmangizda ishlanadi, hech qayerga yuborilmaydi.",
-      "errorCamera": "Kamerani ochib bo‘lmadi. Brauzerda kameraga ruxsat bering va qayta urinib ko‘ring.",
-      "errorModel": "Kiyib ko‘rish tizimi yuklanmadi. Internetni tekshirib, qayta urinib ko‘ring.",
-      "noPerson": "Kadrga kiring"
     }
   },
   "shop": {

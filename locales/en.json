@@ -62,22 +62,6 @@
       "prev": "Previous",
       "next": "Next",
       "hint": "Tap a piece to open it"
-    },
-    "tryon": {
-      "title": "TRY IT ON",
-      "subtitle": "Live, through your camera",
-      "start": "TURN ON CAMERA",
-      "stop": "Turn off camera",
-      "loading": "Loading camera…",
-      "snapshot": "Save photo",
-      "tops": "Tops",
-      "bottoms": "Bottoms",
-      "none": "None",
-      "hint": "Stand 1.5–2 m from the camera so your shoulders (and legs, for trousers) are in frame.",
-      "privacy": "Video is processed on your device and is never uploaded.",
-      "errorCamera": "Could not open the camera. Allow camera access in your browser and try again.",
-      "errorModel": "Could not load the try-on engine. Check your connection and try again.",
-      "noPerson": "Step into the frame"
     }
   },
   "shop": {
