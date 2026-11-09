@@ -119,7 +119,7 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Minimal street pants. Clean fit.',
   sizes: ['S', 'M', 'L', 'XL'],
-  rack: { front: '/products/rack/pants-black-front.webp', back: '/products/rack/pants-black-back.webp' }
+  rack: { front: '/products/rack/pants-black-front.webp', back: '/products/rack/pants-black-rear.webp' }
 },
 {
   id: '11',
@@ -135,7 +135,7 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Relaxed wide leg. Heavy fleece. Full street silhouette.',
   sizes: ['S', 'M', 'L', 'XL'],
-    rack: { front: '/products/rack/pants-wide-front.webp', back: '/products/rack/pants-wide-back.webp' }
+    rack: { front: '/products/rack/pants-wide-front.webp', back: '/products/rack/pants-wide-rear.webp' }
 },
 {
   id: '12',
