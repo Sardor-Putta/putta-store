@@ -13,7 +13,8 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Premium heavyweight cotton. Oversized fit. Luxury street essential.',
   sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-  rack: { front: '/products/rack/tee-noir-front.webp', back: '/products/rack/tee-noir-back.webp' }
+  rack: { front: '/products/rack/tee-noir-front.webp', back: '/products/rack/tee-noir-back.webp' },
+    tryon: '/products/tryon/tee-noir.webp'
 },
   {
     id: '2',
@@ -23,7 +24,8 @@ export const PRODUCTS: Product[] = [
     image: '/products/hoodie-noir/hoodie-03-hanger.webp',
     description: 'Cream tone-on-tone aesthetic. Soft structured silhouette.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    rack: { front: '/products/rack/tee-bone-front.webp', back: '/products/rack/tee-bone-back.webp' }
+    rack: { front: '/products/rack/tee-bone-front.webp', back: '/products/rack/tee-bone-back.webp' },
+    tryon: '/products/tryon/tee-bone.webp'
   },
   {
     id: '3',
@@ -33,7 +35,8 @@ export const PRODUCTS: Product[] = [
     image: '/campaign/campaign-02-model-hoodie-beach.webp',
     description: 'Cold grey minimalism. Drop shoulder. Clean power.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    rack: { front: '/products/rack/tee-steel-front.webp', back: '/products/rack/tee-steel-back.webp' }
+    rack: { front: '/products/rack/tee-steel-front.webp', back: '/products/rack/tee-steel-back.webp' },
+    tryon: '/products/tryon/tee-steel.webp'
   },
   {
     id: '4',
@@ -43,7 +46,8 @@ export const PRODUCTS: Product[] = [
     image: '/products/hoodie-noir/hoodie-04-ghost-mannequin.webp',
     description: 'Muted sky blue. Premium cotton. Elevated everyday wear.',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    rack: { front: '/products/rack/tee-sky-front.webp', back: '/products/rack/tee-sky-back.webp' }
+    rack: { front: '/products/rack/tee-sky-front.webp', back: '/products/rack/tee-sky-back.webp' },
+    tryon: '/products/tryon/tee-sky.webp'
   },
 {
   id: '5',
@@ -59,7 +63,8 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Heavyweight cotton hoodie. Structured oversized silhouette.',
   sizes: ['S', 'M', 'L', 'XL'],
-  rack: { front: '/products/rack/hoodie-noir-front.webp', back: '/products/rack/hoodie-noir-back.webp' }
+  rack: { front: '/products/rack/hoodie-noir-front.webp', back: '/products/rack/hoodie-noir-back.webp' },
+    tryon: '/products/tryon/hoodie-noir.webp'
 },
 {
   id: '6',
@@ -87,7 +92,8 @@ export const PRODUCTS: Product[] = [
   image: '/campaign/campaign-01-model-tshirt-beach.webp',
   description: 'Clean white minimal tee. Premium cotton.',
   sizes: ['S', 'M', 'L', 'XL'],
-    rack: { front: '/products/rack/tee-white-front.webp', back: '/products/rack/tee-white-back.webp' }
+    rack: { front: '/products/rack/tee-white-front.webp', back: '/products/rack/tee-white-back.webp' },
+    tryon: '/products/tryon/tee-white.webp'
 },
 {
   id: '9',
@@ -103,7 +109,8 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Heavy oversized hoodie. Street silhouette.',
   sizes: ['S', 'M', 'L', 'XL'],
-  rack: { front: '/products/rack/hoodie-grey-front.webp', back: '/products/rack/hoodie-grey-back.webp' }
+  rack: { front: '/products/rack/hoodie-grey-front.webp', back: '/products/rack/hoodie-grey-back.webp' },
+    tryon: '/products/tryon/hoodie-grey.webp'
 },
 {
   id: '10',
@@ -119,7 +126,8 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Minimal street pants. Clean fit.',
   sizes: ['S', 'M', 'L', 'XL'],
-  rack: { front: '/products/rack/pants-black-front.webp', back: '/products/rack/pants-black-back.webp' }
+  rack: { front: '/products/rack/pants-black-front.webp', back: '/products/rack/pants-black-back.webp' },
+    tryon: '/products/tryon/pants-black.webp'
 },
 {
   id: '11',
@@ -135,7 +143,8 @@ export const PRODUCTS: Product[] = [
   ],
   description: 'Relaxed wide leg. Heavy fleece. Full street silhouette.',
   sizes: ['S', 'M', 'L', 'XL'],
-    rack: { front: '/products/rack/pants-wide-front.webp', back: '/products/rack/pants-wide-back.webp' }
+    rack: { front: '/products/rack/pants-wide-front.webp', back: '/products/rack/pants-wide-back.webp' },
+    tryon: '/products/tryon/pants-wide.webp'
 },
 {
   id: '12',

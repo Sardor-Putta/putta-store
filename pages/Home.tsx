@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
 import RackShowcase from '../components/Rack/RackShowcase';
+import TryOnCamera from '../components/TryOn/TryOnCamera';
 import { useLanguage } from '../context/LanguageContext';
 
 const Home: React.FC = () => {
@@ -59,6 +60,9 @@ const Home: React.FC = () => {
 
       {/* Clothing rack showcase */}
       <RackShowcase />
+
+      {/* Live camera try-on */}
+      <TryOnCamera />
 
       {/* Featured Section */}
       <section className="py-24 px-6 max-w-7xl mx-auto">

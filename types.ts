@@ -10,6 +10,8 @@ export interface Product {
   sizes: string[];
   /** Transparent cut-out images for the homepage clothing rack. Products without it are not shown on the rack. */
   rack?: { front: string; back?: string };
+  /** Hanger-free cut-out used by the camera try-on. */
+  tryon?: string;
 }
 
 export interface CartItem extends Product {
