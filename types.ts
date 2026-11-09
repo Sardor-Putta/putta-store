@@ -8,6 +8,8 @@ export interface Product {
   images?: string[];
   description: string;
   sizes: string[];
+  /** Transparent cut-out images for the homepage clothing rack. Products without it are not shown on the rack. */
+  rack?: { front: string; back?: string };
 }
 
 export interface CartItem extends Product {

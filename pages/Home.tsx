@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
+import RackShowcase from '../components/Rack/RackShowcase';
 import { useLanguage } from '../context/LanguageContext';
 
 const Home: React.FC = () => {
@@ -55,6 +56,9 @@ const Home: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Clothing rack showcase */}
+      <RackShowcase />
 
       {/* Featured Section */}
       <section className="py-24 px-6 max-w-7xl mx-auto">

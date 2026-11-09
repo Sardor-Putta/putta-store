@@ -51,7 +51,18 @@
     "viewAll": "VIEW ALL",
     "editorialTitle": "THE UNIFORM",
     "editorialSubtitle": "ENGINEERED FOR THE MODERN METROPOLIS",
-    "exploreCampaign": "EXPLORE CAMPAIGN"
+    "exploreCampaign": "EXPLORE CAMPAIGN",
+    "rack": {
+      "title": "THE RACK",
+      "subtitle": "Pick a piece. Take a closer look.",
+      "front": "FRONT",
+      "back": "BACK",
+      "details": "VIEW DETAILS",
+      "close": "Close",
+      "prev": "Previous",
+      "next": "Next",
+      "hint": "Tap a piece to open it"
+    }
   },
   "shop": {
     "title": "ALL PRODUCTS",

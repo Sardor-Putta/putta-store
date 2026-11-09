@@ -51,7 +51,18 @@
     "viewAll": "BARCHASINI KO'RISH",
     "editorialTitle": "UNIFORMA",
     "editorialSubtitle": "ZAMONAVIY METROPOLIYA UCHUN YARATILGAN",
-    "exploreCampaign": "KAMPANIYANI KO'RISH"
+    "exploreCampaign": "KAMPANIYANI KO'RISH",
+    "rack": {
+      "title": "ILGICH",
+      "subtitle": "Buyumni tanlang. Yaqinroq ko'ring.",
+      "front": "OLDI",
+      "back": "ORQASI",
+      "details": "BATAFSIL",
+      "close": "Yopish",
+      "prev": "Oldingi",
+      "next": "Keyingi",
+      "hint": "Ochish uchun buyumni bosing"
+    }
   },
   "shop": {
     "title": "BARCHA MAHSULOTLAR",

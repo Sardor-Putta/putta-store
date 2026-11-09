@@ -12,7 +12,8 @@ export const PRODUCTS: Product[] = [
     '/products/tee-noir/tshirt-01-collar-detail.webp',
   ],
   description: 'Premium heavyweight cotton. Oversized fit. Luxury street essential.',
-  sizes: ['S', 'M', 'L', 'XL', 'XXL']
+  sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+  rack: { front: '/products/rack/tee-noir-front.webp' }
 },
   {
     id: '2',
@@ -54,7 +55,8 @@ export const PRODUCTS: Product[] = [
     '/products/hoodie-noir/hoodie-04-ghost-mannequin.webp',
   ],
   description: 'Heavyweight cotton hoodie. Structured oversized silhouette.',
-  sizes: ['S', 'M', 'L', 'XL']
+  sizes: ['S', 'M', 'L', 'XL'],
+  rack: { front: '/products/rack/hoodie-noir-front.webp', back: '/products/rack/hoodie-noir-back.webp' }
 },
 {
   id: '6',
@@ -96,7 +98,8 @@ export const PRODUCTS: Product[] = [
     '/products/hoodie-noir/hoodie-04-ghost-mannequin.webp',
   ],
   description: 'Heavy oversized hoodie. Street silhouette.',
-  sizes: ['S', 'M', 'L', 'XL']
+  sizes: ['S', 'M', 'L', 'XL'],
+  rack: { front: '/products/rack/hoodie-oversized-front.webp', back: '/products/rack/hoodie-noir-back.webp' }
 },
 {
   id: '10',
@@ -111,7 +114,8 @@ export const PRODUCTS: Product[] = [
     '/products/pants-black/pants-03-label-closeup.webp',
   ],
   description: 'Minimal street pants. Clean fit.',
-  sizes: ['S', 'M', 'L', 'XL']
+  sizes: ['S', 'M', 'L', 'XL'],
+  rack: { front: '/products/rack/pants-black-front.webp' }
 },
 {
   id: '11',
