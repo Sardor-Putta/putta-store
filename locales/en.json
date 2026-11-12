@@ -61,7 +61,15 @@
       "close": "Close",
       "prev": "Previous",
       "next": "Next",
-      "hint": "Tap a piece to open it"
+      "hint": "Tap a piece to open it",
+      "color": "Colour",
+      "colors": {
+        "white": "White",
+        "black": "Black",
+        "blue": "Blue",
+        "red": "Red",
+        "green": "Green"
+      }
     }
   },
   "shop": {

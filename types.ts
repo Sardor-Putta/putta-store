@@ -8,8 +8,11 @@ export interface Product {
   images?: string[];
   description: string;
   sizes: string[];
-  /** Transparent cut-out images for the homepage clothing rack. Products without it are not shown on the rack. */
-  rack?: { front: string; back?: string };
+  /**
+   * Transparent cut-out images for the homepage clothing rack. Products without it are not shown on the rack.
+   * palette: which garment base the 5 colourways in /products/rack/colors/ are made from.
+   */
+  rack?: { front: string; back?: string; palette?: 'tee' | 'hoodie' | 'pants' | 'pantswide' };
 }
 
 export interface CartItem extends Product {

@@ -61,7 +61,15 @@
       "close": "Yopish",
       "prev": "Oldingi",
       "next": "Keyingi",
-      "hint": "Ochish uchun buyumni bosing"
+      "hint": "Ochish uchun buyumni bosing",
+      "color": "Rang",
+      "colors": {
+        "white": "Oq",
+        "black": "Qora",
+        "blue": "Ko'k",
+        "red": "Qizil",
+        "green": "Yashil"
+      }
     }
   },
   "shop": {

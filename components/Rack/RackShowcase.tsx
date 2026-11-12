@@ -19,6 +19,16 @@ const HEIGHT_BY_CATEGORY: Record<string, number> = {
 
 const SPRING = { type: 'spring', stiffness: 260, damping: 26 } as const;
 
+/** Colourways offered for every rack piece; images live in /products/rack/colors/<palette>-<colour>-<side>.webp */
+const COLORS = [
+  { key: 'white', hex: '#f3f2ee' },
+  { key: 'black', hex: '#111111' },
+  { key: 'blue', hex: '#2f4f8f' },
+  { key: 'red', hex: '#a3262a' },
+  { key: 'green', hex: '#2f5f3c' },
+] as const;
+type ColorKey = (typeof COLORS)[number]['key'];
+
 /** How far a resting garment is turned away (deg): enough to save space, little enough to keep its volume. */
 const SIDE_ANGLE = 52;
 
@@ -94,11 +104,13 @@ const RackShowcase: React.FC = () => {
   const [selected, setSelected] = useState<number | null>(null);
   const [side, setSide] = useState<'front' | 'back'>('front');
   const [size, setSize] = useState<string | null>(null);
+  const [color, setColor] = useState<ColorKey | null>(null);
 
   const open = (i: number) => {
     setSelected(i);
     setSide('front');
     setSize(null);
+    setColor(null);
     setHovered(null);
   };
   const close = useCallback(() => setSelected(null), []);
@@ -107,6 +119,7 @@ const RackShowcase: React.FC = () => {
       setSelected(cur => (cur === null ? cur : (cur + dir + items.length) % items.length));
       setSide('front');
       setSize(null);
+      setColor(null);
     },
     [items.length]
   );
@@ -125,6 +138,12 @@ const RackShowcase: React.FC = () => {
   if (items.length === 0) return null;
 
   const current = selected !== null ? items[selected] : null;
+
+  const palette = current?.rack.palette;
+  const colorSrc = (side: 'front' | 'back') =>
+    palette && color ? `/products/rack/colors/${palette}-${color}-${side}.webp` : undefined;
+  const frontSrc = current ? colorSrc('front') ?? current.rack.front : '';
+  const backSrc = current ? colorSrc('back') ?? current.rack.back : undefined;
 
   const onSwipe = (_: unknown, info: PanInfo) => {
     if (info.offset.x < -60) step(1);
@@ -316,16 +335,16 @@ const RackShowcase: React.FC = () => {
                 >
                   <motion.img
                     layoutId={`rack-img-${current.id}`}
-                    src={current.rack.front}
+                    src={frontSrc}
                     alt={current.name}
                     draggable={false}
                     transition={SPRING}
                     className="h-full w-auto max-w-[80vw] object-contain select-none [backface-visibility:hidden] drop-shadow-[0_24px_24px_rgba(0,0,0,0.3)]"
                   />
-                  {current.rack.back && (
+                  {backSrc && (
                     <div className="absolute inset-0 flex justify-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
                       <img
-                        src={current.rack.back}
+                        src={backSrc}
                         alt=""
                         aria-hidden
                         draggable={false}
@@ -346,7 +365,31 @@ const RackShowcase: React.FC = () => {
                 <h3 className="text-sm md:text-base font-bold tracking-[0.18em] uppercase">{current.name}</h3>
                 <p className="text-xs text-neutral-500 mt-1 tracking-widest">${current.price}</p>
 
-                {current.rack.back && (
+                {palette && (
+                  <div className="mt-4 flex flex-col items-center gap-2">
+                    <div className="flex gap-2.5">
+                      {COLORS.map(c => (
+                        <button
+                          key={c.key}
+                          type="button"
+                          onClick={() => setColor(c.key)}
+                          title={t(`home.rack.colors.${c.key}`)}
+                          aria-label={t(`home.rack.colors.${c.key}`)}
+                          aria-pressed={color === c.key}
+                          className={`w-6 h-6 rounded-full border border-black/15 transition-transform ${
+                            color === c.key ? 'ring-2 ring-offset-2 ring-black ring-offset-[#ecebe7] scale-110' : 'hover:scale-110'
+                          }`}
+                          style={{ backgroundColor: c.hex }}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-[10px] tracking-[0.2em] text-neutral-500 uppercase h-3">
+                      {color ? t(`home.rack.colors.${color}`) : t('home.rack.color')}
+                    </span>
+                  </div>
+                )}
+
+                {backSrc && (
                   <div className="mt-4 flex rounded-full border border-neutral-400/70 p-0.5 text-[10px] tracking-[0.2em]">
                     {(['front', 'back'] as const).map(s => (
                       <button
@@ -383,7 +426,13 @@ const RackShowcase: React.FC = () => {
                 <button
                   type="button"
                   disabled={!size}
-                  onClick={() => size && addToCart(current, size)}
+                  onClick={() =>
+                    size &&
+                    addToCart(
+                      { ...current, image: frontSrc },
+                      color ? `${size} · ${t(`home.rack.colors.${color}`)}` : size
+                    )
+                  }
                   className="mt-5 w-64 py-3 rounded-full text-[11px] font-bold tracking-[0.2em] transition-colors bg-black text-white hover:bg-neutral-800 disabled:bg-neutral-300 disabled:text-neutral-500 disabled:cursor-not-allowed"
                 >
                   {size ? t('productDetail.addToCart') : t('productDetail.selectASize')}
